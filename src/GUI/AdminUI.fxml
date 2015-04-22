@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="303.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminController">
+   <center>
+      <VBox prefHeight="176.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Add User" textAlignment="CENTER" translateX="150.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="New ID: " translateX="75.0" translateY="23.0" />
+                  <TextField fx:id="IDField" translateX="86.0" translateY="20.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="New Password:" translateX="28.0" translateY="3.0" />
+                  <PasswordField fx:id="passwordField" translateX="43.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Choose Account Type:" translateX="10.0" />
+                  <ChoiceBox fx:id="userType" onDragDetected="#addUser" prefWidth="150.0" translateX="15.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button fx:id="add" mnemonicParsing="false" onAction="#addUser" text="Add" translateY="-20.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
