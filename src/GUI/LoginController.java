@@ -52,14 +52,11 @@ public class LoginController {
 	@FXML
 	private void login() throws SQLException, IOException{
 		UserTypes user = checkUserType();
-		if (user == UserTypes.PROFESSOR){
-			startProfView();
+		if (user == UserTypes.USER){
+			startMoneyView();
 		}
 		else if ( user == UserTypes.ADMIN){
 			startAdminView();
-		}
-		else if (user == UserTypes.STUDENT){
-			startStudentView();
 		}
 		else{
 			sendError(); 
@@ -80,18 +77,6 @@ public class LoginController {
 		controller.setNetworker(networker);
 	}
 	
-	private void startProfView() throws IOException, SQLException{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfessorUI.fxml"));
-		Parent home_page_parent = (Parent)loader.load();
-		ProfessorController controller = (ProfessorController)loader.getController();
-		controller.setProfessorID(idField.getText());
-		controller.setTableEditable();
-		Scene home_page_scene = new Scene(home_page_parent);
-		Stage app_stage = (Stage) login.getScene().getWindow();
-		app_stage.setScene(home_page_scene);
-		app_stage.show();
-	}
-	
 	private void startStudentView() throws IOException{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentUI.fxml"));
 		Parent home_page_parent = (Parent)loader.load();
@@ -100,7 +85,7 @@ public class LoginController {
 		Stage app_stage = (Stage) login.getScene().getWindow();
 		app_stage.setScene(home_page_scene);
 		app_stage.show();
-		StudentController controller = (StudentController)loader.getController();
+		MoneyController controller = (MoneyController)loader.getController();
 		controller.setNetworker(networker);
 		controller.setUser(ID);
 	}

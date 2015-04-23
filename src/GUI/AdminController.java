@@ -40,7 +40,7 @@ public class AdminController {
 	
 	@FXML
 	public void initialize() throws ClassNotFoundException, SQLException{
-		userType.setItems(FXCollections.observableArrayList("Student","Professor","Admin"));
+		userType.setItems(FXCollections.observableArrayList("User", "Admin"));
 	}
 	
 	@FXML
