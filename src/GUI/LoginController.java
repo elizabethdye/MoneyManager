@@ -6,10 +6,8 @@ import java.sql.SQLException;
 import Model.DatabaseCommand;
 import Model.LoginModel;
 import Model.ServerRequest;
-import Model.UserTypes;
+import Model.UserType;
 import Networking.Networker;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -36,7 +33,7 @@ public class LoginController {
 	
 	String ID;
 	String password;
-	UserTypes type;
+	UserType type;
 	LoginModel model;
 	Networker networker;
 	
@@ -51,11 +48,11 @@ public class LoginController {
 	
 	@FXML
 	private void login() throws SQLException, IOException{
-		UserTypes user = checkUserType();
-		if (user == UserTypes.USER){
+		UserType user = checkUserType();
+		if (user == UserType.USER){
 			startMoneyView();
 		}
-		else if ( user == UserTypes.ADMIN){
+		else if ( user == UserType.ADMIN){
 			startAdminView();
 		}
 		else{
@@ -77,8 +74,8 @@ public class LoginController {
 		controller.setNetworker(networker);
 	}
 	
-	private void startStudentView() throws IOException{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentUI.fxml"));
+	private void startMoneyView() throws IOException{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("MoneyUI.fxml"));
 		Parent home_page_parent = (Parent)loader.load();
 		
 		Scene home_page_scene = new Scene(home_page_parent);
@@ -94,13 +91,13 @@ public class LoginController {
 		errorWindow();
 	}
 	
-	private UserTypes checkUserType() throws SQLException{
+	private UserType checkUserType() throws SQLException{
 		ID = idField.getText();
 		password = passwordField.getText();
 		DatabaseCommand cmd = DatabaseCommand.GET_USER_TYPE;
 		String[] args = {ID, password};
 		ServerRequest request = new ServerRequest(cmd, args);
-		type = (UserTypes) networker.sendServerRequest(request).getResult();
+		type = (UserType) networker.sendServerRequest(request).getResult();
 		return type;
 	}
 	

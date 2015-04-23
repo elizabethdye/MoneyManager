@@ -9,7 +9,7 @@ import Database.Database;
 import Model.DatabaseCommand;
 import Model.ServerRequest;
 import Model.ServerRequestResult;
-import Model.UserTypes;
+import Model.UserType;
 
 public class ServerRequestThread extends Thread {
     private Socket socket;
@@ -65,67 +65,6 @@ public class ServerRequestThread extends Thread {
     		case ADD_GRADE:
     			db.addGrade(args[0], args[1], Double.valueOf(args[2]), args[3], args[4]);
     			result.setResult(null);
-    			break;
-    		case RETRIEVE_GRADE:
-    			result.setResult(db.retrieveGrade(args[0], args[1], args[2], args[3]));
-    			break;
-    		case GET_COURSES:
-    			result.setResult(db.getCourses(args[0]));
-    			break;
-    		case GET_ASSIGNMENTS:
-    			result.setResult(db.getAssignments(args[0], args[1]));
-    			break;
-    		case GET_STUDENTS:
-    			result.setResult(db.getStudents(args[0], args[1]));
-    			for (String student : (ArrayList<String>)result.getResult()){
-    				System.out.println(student);
-    			}
-    			break;
-    		case GET_GRADE_INFO:
-    			result.setResult(db.getGradeInfo(args[0], args[1]));
-    			break;
-    		case ADD_USER:
-    			db.addUser(args[0], args[1], UserTypes.fromString(args[2]));
-    			result.setResult(null);
-    			break;
-    		case GET_USER_TYPE:
-    			result.setResult(db.getUserType(args[0], args[1]));
-    			break;
-    		case ADD_ASSIGNMENT:
-    			db.addAssignment(args[0], args[1], args[2]);
-    			result.setResult(null);
-    			break;
-    		case DELETE_TABLES:
-    			db.deleteTables();
-    			result.setResult(null);
-    			break;
-    		case REMOVE_COURSE:
-    			db.removeCourse(args[0], args[1]);
-    			result.setResult(null);
-    			break;
-    		case SET_TOTAL_POSSIBLE:
-    			db.setTotalPossible(args[0], args[1], args[2], Double.valueOf(args[3]));
-    			result.setResult(null);
-    			break;
-    		case GET_TOTAL_POSSIBLE:
-    			result.setResult(db.getTotalPossible(args[0], args[1], args[2]));
-    			break;
-    		case GET_TOTAL_GRADES:
-    			result.setResult(db.getTotalGrades(args[0], args[1]));
-    			break;
-    		case GET_STUDENT_GRADES:
-    			result.setResult(db.getStudentGrades(args[0], args[1], args[2]));
-    			break;
-    		case REMOVE_ASSIGNMENT:
-    			db.removeAssignment(args[0], args[1], args[2]);
-    			result.setResult(null);
-    			break;
-    		case REMOVE_STUDENT:
-    			db.removeStudent(args[0], args[1], args[2]);
-    			result.setResult(null);
-    			break;
-    		case GET_STUDENT_INFO:
-    			result.setResult(db.getStudentInfo(args[0]));
     			break;
     	}
     	return result;

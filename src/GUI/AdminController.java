@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import Model.LoginModel;
-import Model.UserTypes;
+import Model.UserType;
 import Networking.Networker;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class AdminController {
 		ID = IDField.getText();
 		password = passwordField.getText();
 		type = userType.getSelectionModel().getSelectedItem();
-		model.addUser(ID, password, UserTypes.fromString(type));
+		model.addUser(ID, password, UserType.fromString(type));
 		showNewStage("LoginUI.fxml");
 	}
 	

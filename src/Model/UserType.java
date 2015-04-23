@@ -1,9 +1,9 @@
 package Model;
 
-public enum UserTypes {
+public enum UserType {
 	USER, ADMIN;
 
-    public static UserTypes fromString(String element){
+    public static UserType fromString(String element){
     	element = element.toUpperCase();
         switch (element){
             case "USER":
