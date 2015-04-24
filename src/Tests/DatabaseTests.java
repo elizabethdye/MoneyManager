@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
@@ -70,6 +71,22 @@ public class DatabaseTests {
 		assertEquals((Double)200.0, db.getBalance("User1", "Savings"));
 	}
 	
+	@Test
+	public void testGetAccounts() throws ClassNotFoundException, SQLException {
+		addTwoDeposits();
+		ArrayList<String> results = db.getAccounts("User1");
+		assertEquals(2, results.size());
+		assertTrue(results.contains("Checking"));
+		assertTrue(results.contains("Savings"));
+	}
+	
+	@Test
+	public void testTransfer() throws ClassNotFoundException, SQLException {
+		addTransfer();
+		assertEquals((Double)75.0, db.getBalance("User1", "Checking"));
+		assertEquals((Double)300.0, db.getBalance("User1", "Savings"));
+	}
+	
 	public void addTwoDeposits() throws SQLException, ClassNotFoundException {
 		db.createDeposit("User1", "Checking", 125.0, "March 26");
 		db.createDeposit("User1", "Savings", 250.0, "April 27");
@@ -78,5 +95,10 @@ public class DatabaseTests {
 	public void addTwoWithdrawals() throws ClassNotFoundException, SQLException {
 		db.createWithdrawal("User1", "Checking", 75.0, "Groceries", "May 27");
 		db.createWithdrawal("User1", "Savings", 50.0, "Rent", "June 27");
+	}
+	
+	public void addTransfer() throws ClassNotFoundException, SQLException {
+		addTwoDeposits();
+		db.createTransfer("User1", "Savings", "Checking", 50.0, "April 1");
 	}
 }
