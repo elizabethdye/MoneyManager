@@ -33,15 +33,15 @@ public class ServerTests {
 
 	@Test
 	public void testAddCourse() throws ClassNotFoundException, IOException, SQLException {
-		DatabaseCommand cmd = DatabaseCommand.ADD_COURSE;
-		String[] args = {"Course1", "Prof1"};
+		DatabaseCommand cmd = DatabaseCommand.CREATE_DEPOSIT;
+		String[] args = {"test", "checking", "100", "2015-04-05"};
 		ServerRequest req = new ServerRequest(cmd, args);
 		net.sendServerRequest(req);
-		cmd = DatabaseCommand.GET_COURSES;
-		String[] args2 = {"Prof1"};
+		cmd = DatabaseCommand.GET_BALANCE;
+		String[] args2 = {"test", "checking"};
 		req = new ServerRequest(cmd, args2);
 		ServerRequestResult res = net.sendServerRequest(req);
-		ArrayList<String> courses = (ArrayList<String>) res.getResult();
-		assertArrayEquals(courses.toArray(), new String[]{"Course1"});
+		Double balance = (Double) res.getResult();
+		assertEquals(balance, (Double) 100.0);
 	}
 }

@@ -11,11 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Database.Database;
-import Model.CourseInfo;
-import Model.GradeInfo;
-import Model.UserTypes;
 
-public class DatabaseTest {
+public class DatabaseTests {
+
 
 	private Database db;
 	ArrayList<String> courseList = new ArrayList<String>(
