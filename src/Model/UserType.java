@@ -1,7 +1,7 @@
 package Model;
 
 public enum UserType {
-	USER, ADMIN;
+	USER, ADMIN, INVALID;
 
     public static UserType fromString(String element){
     	element = element.toUpperCase();
@@ -10,6 +10,8 @@ public enum UserType {
                 return USER;
             case "ADMIN":
             	return ADMIN;
+            case "INVALID":
+            	return INVALID;
         }
         return null;
     }

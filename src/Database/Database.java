@@ -1,11 +1,14 @@
 package Database;
 
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
 import java.sql.*;
+
+import Model.UserType;
+import Model.TType;
 
 public class Database {
 	private Statement stat;
+	private String comma = "' , '";
 	
 	public Database(String filename) throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
@@ -24,7 +27,13 @@ public class Database {
 			return;
 		}
 	}
-			
+	
+	public void deleteTables() throws SQLException {
+		stat.executeUpdate("DROP TABLE Logins");
+		stat.executeUpdate("DROP TABLE Transactions");
+		stat.executeUpdate("DROP TABLE Balances");
+	}
+	
 	private ArrayList<String> makeQuery(String query) throws ClassNotFoundException, SQLException {
         ResultSet rs = stat.executeQuery(query);
         ArrayList<String> toReturn = new ArrayList<String>();
@@ -37,24 +46,95 @@ public class Database {
 	private ArrayList<String> getColInfo(String database, String column) throws ClassNotFoundException, SQLException {
         return makeQuery("SELECT " + column + " FROM " + database + " GROUP BY " + column);
 	}
-			
+
 	public void updateColumn(String database, String name, String column, String update) throws ClassNotFoundException, SQLException {
-		String updateCommand = "UPDATE " + database + " SET " + column + " = '" + update + "' WHERE Name = '" + name + "'";
+		String updateCommand = "UPDATE " + database + " SET " + column + " = '" + update + "' WHERE UserID = '" + name + "'";
 		stat.executeUpdate(updateCommand);
 	}
 	
 	public void changePassword(String name, String password) throws SQLException {
-		String updateCommand = "UPDATE Logins SET Password = '" + password + "' WHERE Name = '" + name + "'";
+		String updateCommand = "UPDATE Logins SET Password = '" + password + "' WHERE UserID = '" + name + "'";
 		stat.executeUpdate(updateCommand);
 	}
 	
-	public boolean checkPassword(String name, String password) throws SQLException {
-		String query = "SELECT * FROM Logins WHERE Name = '" + name + "' AND Password = '" + password + "'";
+	public boolean checkUser(String name) throws SQLException {
+		String query = "SELECT * FROM Logins WHERE UserID = '" + name + "'";
 		ResultSet rs = stat.executeQuery(query);
 		if (rs.next()) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean checkPassword(String name, String password) throws SQLException {
+		String query = "SELECT * FROM Logins WHERE UserID = '" + name + "' AND Password = '" + password + "'";
+		ResultSet rs = stat.executeQuery(query);
+		if (rs.next()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public UserType getUserType(String name, String password) throws ClassNotFoundException, SQLException {
+		if (checkPassword(name, password)) {
+			return checkType(name, password);
+		} else {
+			return UserType.INVALID;
+		}
+	}
+	
+	private UserType checkType(String name, String password) throws ClassNotFoundException, SQLException {
+		String query = "SELECT Type FROM Logins WHERE UserID = '" + name + "' AND Password = '" + password + "'";
+		return UserType.fromString(makeQuery(query).get(0));
+	}
+	
+	public boolean addUser(String name, String type, String password) throws SQLException {
+		if (checkUser(name)) {
+			return false;
+		} else {
+			String insertCommand = "INSERT INTO Logins VALUES('" + name + comma + type + comma + password + "')";
+			stat.executeUpdate(insertCommand);
+			return true;
+		}
+	}
+	
+	private void createTransaction(String name, String account, TType transactionType, Double amount, String category, String date) throws SQLException, ClassNotFoundException {
+		String insertCommand = "INSERT INTO Logins VALUES('" +
+				name + comma +
+				account + comma + 
+				transactionType.toString() + comma + 
+				amount.toString() + comma + 
+				category + comma + 
+				date + "')";
+		stat.executeUpdate(insertCommand);
+		Double currentBalance = getBalance(name, account);
+		Double newBalance = currentBalance - amount;
+		updateBalance(name, account, newBalance);
+	}
+
+	public void createTransfer(String name, String accountTo, String accountFrom, Double amount, String date) throws SQLException, ClassNotFoundException {
+		createTransaction(name, accountTo, TType.TRANSFERTO, amount, "TransferTo", date);
+		createTransaction(name, accountFrom, TType.TRANSFERFROM, -amount, "TransferFrom", date);
+	}
+	
+	public void createDeposit(String name, String account, Double amount, String date) throws SQLException, ClassNotFoundException {
+		createTransaction(name, account, TType.DEPOSIT, amount, "Deposit", date);
+	}
+	
+	public void createWithdrawal(String name, String account, Double amount, String category, String date) throws SQLException, ClassNotFoundException {
+		createTransaction(name, account, TType.WITHDRAWAL, amount, category, date);
+	}
+	
+	private void updateBalance(String name, String account, Double amount) throws SQLException {
+		String updateCommand = "UPDATE Balances SET Balance = '" + amount.toString() + "' WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
+		stat.executeUpdate(updateCommand);
+	}
+	
+	public Double getBalance(String name, String account) throws ClassNotFoundException, SQLException {
+		String query = "SELECT Balance FROM Balances WHERE UserID = '" + name + "' AND Account = '" + account + "'";
+		String result = makeQuery(query).get(0);
+		return Double.parseDouble(result);
 	}
 }
