@@ -21,7 +21,6 @@ public class ServerTestThread extends Thread {
 		try {
 			server.listen();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
