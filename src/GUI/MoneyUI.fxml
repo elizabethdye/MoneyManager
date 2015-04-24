@@ -29,7 +29,7 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </ComboBox>
-                                          <Label text="At: ">
+                                          <Label text="Date: ">
                                              <HBox.margin>
                                                 <Insets left="50.0" />
                                              </HBox.margin>
@@ -51,7 +51,7 @@
                                                 <Insets top="3.0" />
                                              </padding>
                                           </Label>
-                                          <TextField fx:id="amountFieldDep" text="\$$$" />
+                                          <TextField fx:id="amountFieldDep" promptText="\$" />
                                        </children>
                                        <opaqueInsets>
                                           <Insets />
@@ -81,7 +81,7 @@
                                              <children>
                                                 <Label text="To: " />
                                                 <ComboBox fx:id="toBoxXfer" prefWidth="150.0" promptText="Account" />
-                                                <Label text="At: ">
+                                                <Label text="Date:">
                                                    <HBox.margin>
                                                       <Insets left="50.0" />
                                                    </HBox.margin>
@@ -100,7 +100,7 @@
                                                       <Insets top="3.0" />
                                                    </padding>
                                                 </Label>
-                                                <TextField fx:id="amountFieldXfer" text="\$$$" />
+                                                <TextField fx:id="amountFieldXfer" promptText="\$" />
                                              </children>
                                              <opaqueInsets>
                                                 <Insets />
@@ -109,7 +109,7 @@
                                                 <Insets bottom="10.0" top="10.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <Button mnemonicParsing="false" text="Deposit" />
+                                          <Button mnemonicParsing="false" text="Transfer" />
                                        </children>
                                     </VBox>
                                  </children></AnchorPane>
@@ -133,7 +133,7 @@
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
                                                 </ComboBox>
-                                                <Label text="At: ">
+                                                <Label text="Date:">
                                                    <HBox.margin>
                                                       <Insets left="50.0" />
                                                    </HBox.margin>
@@ -155,7 +155,7 @@
                                                       <Insets top="3.0" />
                                                    </padding>
                                                 </Label>
-                                                <TextField fx:id="moneyFieldWd" text="\$$$" />
+                                                <TextField fx:id="moneyFieldWd" promptText="\$" />
                                              </children>
                                              <opaqueInsets>
                                                 <Insets />
@@ -164,7 +164,7 @@
                                                 <Insets bottom="10.0" top="10.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <Button mnemonicParsing="false" text="Deposit" />
+                                          <Button mnemonicParsing="false" text="Withdrawal" />
                                        </children>
                                     </VBox>
                                  </children>
