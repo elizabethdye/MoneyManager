@@ -128,4 +128,9 @@ public class Database {
 		String result = makeQuery(query).get(0);
 		return Double.parseDouble(result);
 	}
+	
+	public ArrayList<String> getAccounts(String name) throws ClassNotFoundException, SQLException {
+		String query = "SELECT Account FROM Balances WHERE UserID = '" + name + "'";
+		return makeQuery(query);
+	}
 }
