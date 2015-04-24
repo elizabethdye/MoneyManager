@@ -9,6 +9,7 @@ import Database.Database;
 import Model.DatabaseCommand;
 import Model.ServerRequest;
 import Model.ServerRequestResult;
+import Model.TType;
 import Model.UserType;
 
 public class ServerRequestThread extends Thread {
@@ -54,17 +55,29 @@ public class ServerRequestThread extends Thread {
     		case CREATE_TABLES:
     			result.setResult(null);
     			break;
-    		case ADD_COURSE:
-    			db.addCourse(args[0], args[1]);
+    		case ADD_USER:
+    			result.setResult(db.addUser(args[0], UserType.valueOf(args[1]), args[2]));
+    			break;
+    		case GET_USER_TYPE:
+    			result.setResult(db.getUserType(args[0], args[1]));
+    			break;
+//    		case CREATE_TRANSACTION:
+//    			db.createTransaction(args[0], args[1], TType.valueOf(args[2]), Double.valueOf(args[3]), args[4], args[5]);
+//    			break;
+    		case CREATE_TRANSFER:
+    			db.createTransfer(args[0], args[1], args[2], Double.valueOf(args[3]), args[4]);
     			result.setResult(null);
     			break;
-    		case ADD_STUDENT:
-    			db.addStudent(args[0], args[1], args[2]);
+    		case CREATE_DEPOSIT:
+    			db.createDeposit(args[0], args[1], Double.valueOf(args[2]), args[3]);
     			result.setResult(null);
     			break;
-    		case ADD_GRADE:
-    			db.addGrade(args[0], args[1], Double.valueOf(args[2]), args[3], args[4]);
+    		case UPDATE_BALANCE:
+    			db.updateBalance(args[0], args[1], Double.valueOf(args[2]));
     			result.setResult(null);
+    			break;
+    		case GET_BALANCE:
+    			result.setResult(db.getBalance(args[0], args[1]));
     			break;
     	}
     	return result;
