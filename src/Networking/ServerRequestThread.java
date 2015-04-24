@@ -46,7 +46,7 @@ public class ServerRequestThread extends Thread {
         }
     }
     
-    private ServerRequestResult evaluateRequest(ServerRequest request) throws SQLException{
+    private ServerRequestResult evaluateRequest(ServerRequest request) throws SQLException, NumberFormatException, ClassNotFoundException{
     	DatabaseCommand command = request.getCommand();
     	String[] args = request.getArgs();
     	ServerRequestResult result = new ServerRequestResult();
@@ -72,10 +72,10 @@ public class ServerRequestThread extends Thread {
     			db.createDeposit(args[0], args[1], Double.valueOf(args[2]), args[3]);
     			result.setResult(null);
     			break;
-    		case UPDATE_BALANCE:
-    			db.updateBalance(args[0], args[1], Double.valueOf(args[2]));
-    			result.setResult(null);
-    			break;
+//    		case UPDATE_BALANCE:
+//    			db.updateBalance(args[0], args[1], Double.valueOf(args[2]));
+//    			result.setResult(null);
+//    			break;
     		case GET_BALANCE:
     			result.setResult(db.getBalance(args[0], args[1]));
     			break;

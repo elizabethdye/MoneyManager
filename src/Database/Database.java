@@ -81,11 +81,11 @@ public class Database {
 		return UserType.fromString(makeQuery(query).get(0));
 	}
 	
-	public boolean addUser(String name, String type, String password) throws SQLException {
+	public boolean addUser(String name, UserType type, String password) throws SQLException {
 		if (checkUser(name)) {
 			return false;
 		} else {
-			String insertCommand = "INSERT INTO Logins VALUES('" + name + comma + type + comma + password + "')";
+			String insertCommand = "INSERT INTO Logins VALUES('" + name + comma + type.toString() + comma + password + "')";
 			stat.executeUpdate(insertCommand);
 			return true;
 		}
