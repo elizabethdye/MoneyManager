@@ -43,15 +43,6 @@ public class Database {
         return toReturn;
 	}
 	
-	private ArrayList<String> getColInfo(String database, String column) throws ClassNotFoundException, SQLException {
-        return makeQuery("SELECT " + column + " FROM " + database + " GROUP BY " + column);
-	}
-
-	public void updateColumn(String database, String name, String column, String update) throws ClassNotFoundException, SQLException {
-		String updateCommand = "UPDATE " + database + " SET " + column + " = '" + update + "' WHERE UserID = '" + name + "'";
-		stat.executeUpdate(updateCommand);
-	}
-	
 	public void changePassword(String name, String password) throws SQLException {
 		String updateCommand = "UPDATE Logins SET Password = '" + password + "' WHERE UserID = '" + name + "'";
 		stat.executeUpdate(updateCommand);
