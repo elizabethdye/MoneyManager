@@ -12,28 +12,36 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class MoneyController {
-	String userID;
-	MoneyModel model;
-	Networker net;
+
+	
 	@FXML
 	TitledPane Deposit;
 
 	@FXML
 	ComboBox toBoxDep;
+	
 	@FXML
-	DatePicker datePickerDep;
+	DatePicker depDatePick;
+	
 	@FXML
-	TextField amountFieldDep;
+	TextField depAmountField;
 
 	@FXML
-	ComboBox fromBoxXfer;
+	ComboBox xferFromBox;
+	
 	@FXML
-	ComboBox toBoxXfer;
+	ComboBox xferToBox;
+	
 	@FXML
-	DatePicker datePickerXfer;
+	DatePicker xferDatePick;
+	
 	@FXML
-	TextField amountFieldXfer;
-
+	TextField xferAmountField;
+	
+	String userID;
+	MoneyModel model;
+	Networker net;
+	
 
 	@FXML
 	public void initialize(){
@@ -42,19 +50,19 @@ public class MoneyController {
 
 	@FXML
 	public void handleDeposit(){
-		String date = datePickerDep.getValue().toString();
-		double amount = Double.parseDouble(amountFieldDep.getText());
-		String account = toBoxDep.getSelectionModel().getSelectedItem().toString();
-		createDeposit(userID, account, amount, date);
+		model.setDate(depDatePick.getValue().toString());
+		model.setAmount(Double.parseDouble(depAmountField.getText()));
+		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
+		model.deposit();
 	}
 
 	@FXML
 	public void handleTransfer(){
-		String date = datePickerDep.getValue().toString();
-		double amount = Double.parseDouble(amountFieldDep.getText());
-		String fromAcc = fromBoxXfer.getSelectionModel().getSelectedItem().toString();
-		String toAcc = toBoxXfer.getSelectionModel().getSelectedItem().toString();
-		createTransfer(userID, toAcc, fromAcc, amount, date);
+		model.date = depDatePick.getValue().toString();
+		model.amount = Double.parseDouble(depAmountField.getText());
+		model.fromAcct = xferFromBox.getSelectionModel().getSelectedItem().toString();
+		model.toAcct = xferToBox.getSelectionModel().getSelectedItem().toString();
+		model.transfer();
 	}
 
 	public void setUser(String name) {
