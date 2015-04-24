@@ -92,7 +92,7 @@ public class Database {
 	}
 	
 	private void createTransaction(String name, String account, TType transactionType, Double amount, String category, String date) throws SQLException, ClassNotFoundException {
-		String insertCommand = "INSERT INTO Logins VALUES('" +
+		String insertCommand = "INSERT INTO Transactions VALUES('" +
 				name + comma +
 				account + comma + 
 				transactionType.toString() + comma + 
@@ -101,7 +101,7 @@ public class Database {
 				date + "')";
 		stat.executeUpdate(insertCommand);
 		Double currentBalance = getBalance(name, account);
-		Double newBalance = currentBalance - amount;
+		Double newBalance = currentBalance + amount;
 		updateBalance(name, account, newBalance);
 	}
 
@@ -115,18 +115,24 @@ public class Database {
 	}
 	
 	public void createWithdrawal(String name, String account, Double amount, String category, String date) throws SQLException, ClassNotFoundException {
-		createTransaction(name, account, TType.WITHDRAWAL, amount, category, date);
+		createTransaction(name, account, TType.WITHDRAWAL, -amount, category, date);
 	}
 	
 	private void updateBalance(String name, String account, Double amount) throws SQLException {
-		String updateCommand = "UPDATE Balances SET Balance = '" + amount.toString() + "' WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
+		String updateCommand = "UPDATE Balances SET Balance = '" + amount.toString() + "' WHERE UserID = '" + name + "' AND Account = '" + account + "'";
 		stat.executeUpdate(updateCommand);
 	}
 	
 	public Double getBalance(String name, String account) throws ClassNotFoundException, SQLException {
 		String query = "SELECT Balance FROM Balances WHERE UserID = '" + name + "' AND Account = '" + account + "'";
-		String result = makeQuery(query).get(0);
-		return Double.parseDouble(result);
+		ArrayList<String> result = makeQuery(query);
+		if (result.size() == 0) {
+			String insertCommand = "INSERT INTO Balances VALUES('" + name + comma + account + "' , '0.0')";
+			stat.executeUpdate(insertCommand);
+			return 0.0;
+		} else {
+			return Double.parseDouble(result.get(0));
+		}
 	}
 	
 	public ArrayList<String> getAccounts(String name) throws ClassNotFoundException, SQLException {

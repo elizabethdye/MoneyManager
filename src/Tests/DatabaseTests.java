@@ -62,8 +62,21 @@ public class DatabaseTests {
 		assertEquals(UserType.INVALID, db.getUserType("Non-Existant Professor", "Password"));
 	}
 	
+	@Test
+	public void testAddingWithdrawals() throws ClassNotFoundException, SQLException {
+		addTwoDeposits();
+		addTwoWithdrawals();
+		assertEquals((Double)50.0, db.getBalance("User1", "Checking"));
+		assertEquals((Double)200.0, db.getBalance("User1", "Savings"));
+	}
+	
 	public void addTwoDeposits() throws SQLException, ClassNotFoundException {
 		db.createDeposit("User1", "Checking", 125.0, "March 26");
 		db.createDeposit("User1", "Savings", 250.0, "April 27");
+	}
+	
+	public void addTwoWithdrawals() throws ClassNotFoundException, SQLException {
+		db.createWithdrawal("User1", "Checking", 75.0, "Groceries", "May 27");
+		db.createWithdrawal("User1", "Savings", 50.0, "Rent", "June 27");
 	}
 }
