@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Database.Database;
+import Model.UserType;
+
 
 public class DatabaseTests {
 
