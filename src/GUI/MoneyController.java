@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MoneyController {
@@ -62,7 +63,11 @@ public class MoneyController {
 	String userID;
 	MoneyModel model;
 	Networker net;
-	ObservableList<String> accts;
+	ArrayList<String> accts;
+	ObservableList<String> depAccts;
+	ObservableList<String> withAccts;
+	ObservableList<String> xferAcctsTo;
+	ObservableList<String> xferAcctsFrom;
 	
 	
 
@@ -104,15 +109,19 @@ public class MoneyController {
 		model.setUser(name);
 		model.setNetworker(net);
 //		model.getAccts();
-		accts = FXCollections.observableArrayList();
+		accts = new ArrayList<String>();
 //		model.accts.add((String) "Checking");
 //		model.accts.add((String) "Savings");
 		accts.add((String) "Checking");
 		accts.add((String) "Savings");
-		toBoxDep.setItems(accts);
-//		withFromBox.setItems(accts);
-//		xferFromBox.setItems(accts);
-//		xferToBox.setItems(accts);
+		depAccts = FXCollections.observableArrayList(accts);
+		withAccts = FXCollections.observableArrayList(accts);
+		xferAcctsTo = FXCollections.observableArrayList(accts);
+		xferAcctsFrom = FXCollections.observableArrayList(accts);
+		toBoxDep.setItems(depAccts);
+		withFromBox.setItems(withAccts);
+		xferFromBox.setItems(xferAcctsFrom);
+		xferToBox.setItems(xferAcctsTo);
 	}
 	
 	public void setModel(MoneyModel model) {

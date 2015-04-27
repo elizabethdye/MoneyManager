@@ -40,7 +40,7 @@
                                                             <Insets left="50.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <DatePicker fx:id="datePickerDep">
+                                                      <DatePicker fx:id="depDatePick">
                                                          <HBox.margin>
                                                             <Insets left="20.0" />
                                                          </HBox.margin>
@@ -57,7 +57,7 @@
                                                             <Insets top="3.0" />
                                                          </padding>
                                                       </Label>
-                                                      <TextField fx:id="amountFieldDep" promptText="\$" />
+                                                      <TextField fx:id="depAmountField" promptText="\$" />
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets />
@@ -80,19 +80,19 @@
                                                       <HBox layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="618.0">
                                                          <children>
                                                             <Label text="From:" />
-                                                            <ComboBox fx:id="fromBoxXfer" prefWidth="150.0" promptText="Account" />
+                                                            <ComboBox prefWidth="150.0" promptText="Account" fx:id="xferFromBox" />
                                                          </children>
                                                       </HBox>
                                                       <HBox prefHeight="49.0" prefWidth="618.0">
                                                          <children>
                                                             <Label text="To: " />
-                                                            <ComboBox fx:id="toBoxXfer" prefWidth="150.0" promptText="Account" />
+                                                            <ComboBox prefWidth="150.0" promptText="Account" fx:id="xferToBox" />
                                                             <Label text="Date:">
                                                                <HBox.margin>
                                                                   <Insets left="50.0" />
                                                                </HBox.margin>
                                                             </Label>
-                                                            <DatePicker fx:id="datePickerXfer">
+                                                            <DatePicker fx:id="xferDatePick">
                                                                <HBox.margin>
                                                                   <Insets left="20.0" />
                                                                </HBox.margin>
@@ -106,7 +106,7 @@
                                                                   <Insets top="3.0" />
                                                                </padding>
                                                             </Label>
-                                                            <TextField fx:id="amountFieldXfer" promptText="\$" />
+                                                            <TextField promptText="\$" fx:id="xferAmountField" />
                                                          </children>
                                                          <opaqueInsets>
                                                             <Insets />
@@ -135,7 +135,7 @@
                                                                   <Insets left="10.0" />
                                                                </HBox.margin>
                                                             </Label>
-                                                            <ComboBox fx:id="fromBoxWd" prefWidth="150.0" promptText="Account">
+                                                            <ComboBox fx:id="withFromBox" prefWidth="150.0" promptText="Account">
                                                                <HBox.margin>
                                                                   <Insets left="20.0" />
                                                                </HBox.margin>
@@ -145,7 +145,7 @@
                                                                   <Insets left="50.0" />
                                                                </HBox.margin>
                                                             </Label>
-                                                            <DatePicker fx:id="datePickerWd">
+                                                            <DatePicker fx:id="withDatePick">
                                                                <HBox.margin>
                                                                   <Insets left="20.0" />
                                                                </HBox.margin>
@@ -162,7 +162,7 @@
                                                                   <Insets top="3.0" />
                                                                </padding>
                                                             </Label>
-                                                            <TextField fx:id="moneyFieldWd" promptText="\$" />
+                                                            <TextField fx:id="withAmountField" promptText="\$" />
                                                          </children>
                                                          <opaqueInsets>
                                                             <Insets />
