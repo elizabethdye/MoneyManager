@@ -102,12 +102,17 @@ public class MoneyController {
 		this.userID = name;
 		model = new MoneyModel();
 		model.setUser(name);
-		model.getAccts();
-		accts = FXCollections.observableArrayList(model.accts);
+		model.setNetworker(net);
+//		model.getAccts();
+		accts = FXCollections.observableArrayList();
+//		model.accts.add((String) "Checking");
+//		model.accts.add((String) "Savings");
+		accts.add((String) "Checking");
+		accts.add((String) "Savings");
 		toBoxDep.setItems(accts);
-		withFromBox.setItems(accts);
-		xferFromBox.setItems(accts);
-		xferToBox.setItems(accts);
+//		withFromBox.setItems(accts);
+//		xferFromBox.setItems(accts);
+//		xferToBox.setItems(accts);
 	}
 	
 	public void setModel(MoneyModel model) {

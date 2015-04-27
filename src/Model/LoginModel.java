@@ -23,12 +23,12 @@ public class LoginModel {
 	
 	private void addAccts(String ID){
 		DatabaseCommand cmd = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args = {ID, "Checking", "0", "4/25/2015"};
+		String[] args = {ID, "Checking", "1.0", "4/25/2015"};
 		ServerRequest request = new ServerRequest(cmd, args);
 		networker.sendServerRequest(request);
 		
 		cmd = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args2 = {ID, "Savings", "0", "4/25/2015"};
+		String[] args2 = {ID, "Savings", "1.0", "4/25/2015"};
 		request = new ServerRequest(cmd, args2);
 		networker.sendServerRequest(request);
 	}

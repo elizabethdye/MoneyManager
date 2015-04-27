@@ -83,10 +83,7 @@ public class LoginController {
 		Scene home_page_scene = new Scene(home_page_parent);
 		Stage app_stage = (Stage) login.getScene().getWindow();
 		app_stage.setScene(home_page_scene);
-		app_stage.show();
-	
-
-		
+		app_stage.show();	
 	}
 	
 	private void sendError(){

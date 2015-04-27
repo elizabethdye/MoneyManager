@@ -38,6 +38,7 @@ public class Networker {
 	
 	public synchronized ServerRequestResult sendServerRequest(DatabaseCommand cmd, String[] args){
 		ServerRequest request = new ServerRequest(cmd, args);
+		System.out.println(args);
 		requestThread = new ClientRequestThread(request, serverHost, serverPort, channel);
 		new Receiver(this).start();
 		requestThread.start();

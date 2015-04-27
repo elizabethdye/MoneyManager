@@ -136,6 +136,7 @@ public class Database {
 	}
 	
 	public ArrayList<String> getAccounts(String name) throws ClassNotFoundException, SQLException {
+		System.out.println("IN DATABASEEEEEEEEE");
 		String query = "SELECT Account FROM Balances WHERE UserID = '" + name + "'";
 		return makeQuery(query);
 	}

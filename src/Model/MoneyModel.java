@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import Networking.Networker;
 
@@ -13,7 +15,7 @@ public class MoneyModel {
 	Double amount;
 	String date;
 	
-	public ArrayList<String> accts;
+	public ObservableList<String> accts;
 	String acctAmounts;
 	
 	public void setNetworker(Networker net){
@@ -74,18 +76,17 @@ public class MoneyModel {
 		
 		return acctAmounts;
 	}
-	
+
 	public void getAccts(){
 		DatabaseCommand cmd = DatabaseCommand.GET_ACCTS;
 		String[] args = {userID};
 		ServerRequest request = new ServerRequest(cmd, args);
-		ServerRequestResult result = (ServerRequestResult) net.sendServerRequest(request);
-		try{
-			accts = (ArrayList<String>) result.getResult();
-		}
-		catch{
-			accts = {"Error"};
-		}
+		ServerRequestResult result = net.sendServerRequest(request);
+		System.out.println("sent request");
+		ArrayList<String> acctsTemp = (ArrayList<String>) result.getResult();
+//		accts = new FXCollections.observableArrayList();
+		System.out.println("HERE@");
+		
 	}
 	
 }
