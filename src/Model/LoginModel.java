@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.SQLException;
+
 import Networking.Networker;
 
 public class LoginModel {
@@ -17,8 +18,20 @@ public class LoginModel {
 		String[] args = {ID, type.toString(), password};
 		ServerRequest request = new ServerRequest (cmd, args);
 		networker.sendServerRequest(request);
+		addAccts(ID);
 	}
 	
+	private void addAccts(String ID){
+		DatabaseCommand cmd = DatabaseCommand.CREATE_DEPOSIT;
+		String[] args = {ID, "Checking", "0", "4/25/2015"};
+		ServerRequest request = new ServerRequest(cmd, args);
+		networker.sendServerRequest(request);
+		
+		cmd = DatabaseCommand.CREATE_DEPOSIT;
+		String[] args2 = {ID, "Savings", "0", "4/25/2015"};
+		request = new ServerRequest(cmd, args2);
+		networker.sendServerRequest(request);
+	}
 	public Networker getNetworker() {
 		return networker;
 	}

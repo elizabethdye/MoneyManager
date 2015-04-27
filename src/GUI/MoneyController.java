@@ -2,6 +2,8 @@ package GUI;
 
 import Model.MoneyModel;
 import Networking.Networker;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -60,11 +62,13 @@ public class MoneyController {
 	String userID;
 	MoneyModel model;
 	Networker net;
+	ObservableList<String> accts;
+	
 	
 
 	@FXML
 	public void initialize(){
-
+		net = new Networker();
 	}
 
 	@FXML
@@ -96,13 +100,19 @@ public class MoneyController {
 	}
 	public void setUser(String name) {
 		this.userID = name;
+		model.getAccts();
+		accts = FXCollections.observableArrayList(model.accts);
+		toBoxDep.setItems(accts);
+		withFromBox.setItems(accts);
+		xferFromBox.setItems(accts);
+		xferToBox.setItems(accts);
 	}
 	
 	public void setModel(MoneyModel model) {
 		this.model = model;
 	}
 
-	public void setNetworker(Networker net){
-		this.model.setNetworker(net);
-	}
+//	public void setNetworker(Networker net){
+//		this.model.setNetworker(net);
+//	}
 }

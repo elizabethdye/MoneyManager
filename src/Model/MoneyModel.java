@@ -11,7 +11,7 @@ public class MoneyModel {
 	Double amount;
 	String date;
 	
-	String[] accts;
+	public String[] accts;
 	String acctAmounts;
 	
 	public void setNetworker(Networker net){
@@ -73,10 +73,12 @@ public class MoneyModel {
 		return acctAmounts;
 	}
 	
-	private void getAccts(){
+	public void getAccts(){
+		System.out.println("HERE");
 		DatabaseCommand cmd = DatabaseCommand.GET_ACCTS;
 		String[] args = {userID};
 		ServerRequest request = new ServerRequest(cmd, args);
 		accts = (String[]) net.sendServerRequest(request).getResult();
 	}
+	
 }

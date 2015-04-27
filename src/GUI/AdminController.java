@@ -37,9 +37,11 @@ public class AdminController {
 	LoginModel model;
 	
 	private String userID;
+	Networker net;
 	
 	@FXML
 	public void initialize() throws ClassNotFoundException, SQLException{
+		net = new Networker();
 		userType.setItems(FXCollections.observableArrayList("User", "Admin"));
 	}
 	
