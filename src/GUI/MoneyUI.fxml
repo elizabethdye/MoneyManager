@@ -6,214 +6,227 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1097.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MoneyController">
-  <tabs>
-    <Tab text="Money">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Accordion fx:id="actionContainer" layoutX="69.0" layoutY="84.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <panes>
-                      <TitledPane fx:id="depPane" animated="false" text="Deposit">
-                           <content>
-                              <VBox prefHeight="295.0" prefWidth="587.0">
-                                 <children>
-                                    <HBox prefHeight="49.0" prefWidth="579.0">
-                                       <children>
-                                          <Label text="To: ">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <ComboBox fx:id="toBoxDep" prefWidth="150.0" promptText="Account">
-                                             <HBox.margin>
-                                                <Insets left="20.0" />
-                                             </HBox.margin>
-                                          </ComboBox>
-                                          <Label text="Date: ">
-                                             <HBox.margin>
-                                                <Insets left="50.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <DatePicker fx:id="datePickerDep">
-                                             <HBox.margin>
-                                                <Insets left="20.0" />
-                                             </HBox.margin>
-                                          </DatePicker>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox prefHeight="28.0" prefWidth="579.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
-                                             <padding>
-                                                <Insets top="3.0" />
-                                             </padding>
-                                          </Label>
-                                          <TextField fx:id="amountFieldDep" promptText="\$" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Button mnemonicParsing="false" text="Deposit" />
-                                 </children>
-                              </VBox>
-                           </content>
-                      </TitledPane>
-                      <TitledPane animated="false" text="Transfer" fx:id="xferPane">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="315.0" prefWidth="618.0">
-                                       <children>
-                                          <HBox layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="618.0">
-                                             <children>
-                                                <Label text="From:" />
-                                                <ComboBox fx:id="fromBoxXfer" prefWidth="150.0" promptText="Account" />
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="49.0" prefWidth="618.0">
-                                             <children>
-                                                <Label text="To: " />
-                                                <ComboBox fx:id="toBoxXfer" prefWidth="150.0" promptText="Account" />
-                                                <Label text="Date:">
-                                                   <HBox.margin>
-                                                      <Insets left="50.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <DatePicker fx:id="datePickerXfer">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </HBox.margin>
-                                                </DatePicker>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="28.0" prefWidth="579.0">
-                                             <children>
-                                                <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
-                                                   <padding>
-                                                      <Insets top="3.0" />
-                                                   </padding>
-                                                </Label>
-                                                <TextField fx:id="amountFieldXfer" promptText="\$" />
-                                             </children>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <VBox.margin>
-                                                <Insets bottom="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <Button mnemonicParsing="false" text="Transfer" />
-                                       </children>
-                                    </VBox>
-                                 </children></AnchorPane>
-                        </content>
-                      </TitledPane>
-                      <TitledPane fx:id="wdPane" animated="false" text="Withdrawal">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="315.0" prefWidth="618.0">
-                                       <children>
-                                          <HBox prefHeight="49.0" prefWidth="579.0">
-                                             <children>
-                                                <Label text="From:">
-                                                   <HBox.margin>
-                                                      <Insets left="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <ComboBox fx:id="fromBoxWd" prefWidth="150.0" promptText="Account">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </HBox.margin>
-                                                </ComboBox>
-                                                <Label text="Date:">
-                                                   <HBox.margin>
-                                                      <Insets left="50.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <DatePicker fx:id="datePickerWd">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </HBox.margin>
-                                                </DatePicker>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <HBox prefHeight="28.0" prefWidth="579.0">
-                                             <children>
-                                                <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
-                                                   <padding>
-                                                      <Insets top="3.0" />
-                                                   </padding>
-                                                </Label>
-                                                <TextField fx:id="moneyFieldWd" promptText="\$" />
-                                             </children>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <VBox.margin>
-                                                <Insets bottom="10.0" top="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <Button mnemonicParsing="false" text="Withdrawal" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                    </panes>
-                  </Accordion>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab text="Manager">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <SplitPane dividerPositions="0.45484949832775917" layoutX="165.0" layoutY="97.0" prefHeight="367.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="acctAmounts" text="Account Balances:" />
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1097.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Money">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutX="-146.0" layoutY="61.0" prefHeight="618.0" prefWidth="494.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                              </TableView>
+                              <Accordion fx:id="actionContainer" layoutX="69.0" layoutY="84.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Deposit">
+                                       <content>
+                                          <VBox prefHeight="295.0" prefWidth="587.0">
+                                             <children>
+                                                <HBox prefHeight="49.0" prefWidth="579.0">
+                                                   <children>
+                                                      <Label text="To: ">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <ComboBox fx:id="toBoxDep" prefWidth="150.0" promptText="Account">
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                      <Label text="Date: ">
+                                                         <HBox.margin>
+                                                            <Insets left="50.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <DatePicker fx:id="datePickerDep">
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" />
+                                                         </HBox.margin>
+                                                      </DatePicker>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox prefHeight="28.0" prefWidth="579.0">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
+                                                         <padding>
+                                                            <Insets top="3.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <TextField fx:id="amountFieldDep" promptText="\$" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <Button fx:id="Deposit" mnemonicParsing="false" onAction="#handleDeposit" text="Deposit" />
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Transfer">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox prefHeight="315.0" prefWidth="618.0">
+                                                   <children>
+                                                      <HBox layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="618.0">
+                                                         <children>
+                                                            <Label text="From:" />
+                                                            <ComboBox fx:id="fromBoxXfer" prefWidth="150.0" promptText="Account" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="49.0" prefWidth="618.0">
+                                                         <children>
+                                                            <Label text="To: " />
+                                                            <ComboBox fx:id="toBoxXfer" prefWidth="150.0" promptText="Account" />
+                                                            <Label text="Date:">
+                                                               <HBox.margin>
+                                                                  <Insets left="50.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <DatePicker fx:id="datePickerXfer">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </HBox.margin>
+                                                            </DatePicker>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="28.0" prefWidth="579.0">
+                                                         <children>
+                                                            <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
+                                                               <padding>
+                                                                  <Insets top="3.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <TextField fx:id="amountFieldXfer" promptText="\$" />
+                                                         </children>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <Button fx:id="Transfer" mnemonicParsing="false" onAction="#handleTransfer" text="Transfer" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Withdrawal">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox prefHeight="315.0" prefWidth="618.0">
+                                                   <children>
+                                                      <HBox prefHeight="49.0" prefWidth="579.0">
+                                                         <children>
+                                                            <Label text="From:">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <ComboBox fx:id="fromBoxWd" prefWidth="150.0" promptText="Account">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </HBox.margin>
+                                                            </ComboBox>
+                                                            <Label text="Date:">
+                                                               <HBox.margin>
+                                                                  <Insets left="50.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <DatePicker fx:id="datePickerWd">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" />
+                                                               </HBox.margin>
+                                                            </DatePicker>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <HBox prefHeight="28.0" prefWidth="579.0">
+                                                         <children>
+                                                            <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
+                                                               <padding>
+                                                                  <Insets top="3.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <TextField fx:id="moneyFieldWd" promptText="\$" />
+                                                         </children>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" top="10.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                      <Button fx:id="Withdrawal" mnemonicParsing="false" onAction="#handleWithdrawal" text="Withdrawal" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="438.0">
+                     </content>
+                  </Tab>
+                  <Tab text="Manager">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox prefHeight="618.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <LineChart fx:id="lineChart">
-                                      <xAxis>
-                                        <NumberAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </LineChart>
-                                    <PieChart fx:id="pieChart" prefHeight="335.0" prefWidth="532.0" />
-                                 </children>
-                              </VBox>
+                              <SplitPane dividerPositions="0.45484949832775917" layoutX="165.0" layoutY="97.0" prefHeight="367.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TableView layoutX="-146.0" layoutY="61.0" prefHeight="618.0" prefWidth="494.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                <TableColumn prefWidth="75.0" text="C2" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="438.0">
+                                       <children>
+                                          <VBox prefHeight="618.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <LineChart fx:id="lineChart">
+                                                   <xAxis>
+                                                      <NumberAxis side="BOTTOM" />
+                                                   </xAxis>
+                                                   <yAxis>
+                                                      <NumberAxis side="LEFT" />
+                                                   </yAxis>
+                                                </LineChart>
+                                                <PieChart fx:id="pieChart" prefHeight="335.0" prefWidth="532.0" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
                            </children>
                         </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-  </tabs>
-</TabPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
