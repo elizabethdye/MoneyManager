@@ -100,6 +100,8 @@ public class MoneyController {
 	}
 	public void setUser(String name) {
 		this.userID = name;
+		model = new MoneyModel();
+		model.setUser(name);
 		model.getAccts();
 		accts = FXCollections.observableArrayList(model.accts);
 		toBoxDep.setItems(accts);

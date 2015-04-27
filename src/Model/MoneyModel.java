@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 import javafx.scene.control.Label;
 import Networking.Networker;
 
@@ -11,7 +13,7 @@ public class MoneyModel {
 	Double amount;
 	String date;
 	
-	public String[] accts;
+	public ArrayList<String> accts;
 	String acctAmounts;
 	
 	public void setNetworker(Networker net){
@@ -74,11 +76,16 @@ public class MoneyModel {
 	}
 	
 	public void getAccts(){
-		System.out.println("HERE");
 		DatabaseCommand cmd = DatabaseCommand.GET_ACCTS;
 		String[] args = {userID};
 		ServerRequest request = new ServerRequest(cmd, args);
-		accts = (String[]) net.sendServerRequest(request).getResult();
+		ServerRequestResult result = (ServerRequestResult) net.sendServerRequest(request);
+		try{
+			accts = (ArrayList<String>) result.getResult();
+		}
+		catch{
+			accts = {"Error"};
+		}
 	}
 	
 }
