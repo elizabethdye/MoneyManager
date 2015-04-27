@@ -8,3 +8,5 @@
 .idea/vcs.xml
 .idea/workspace.xml
 MoneyManager.iml
+.idea/libraries/sqlite_jdbc_3_8_7.xml
+.idea/uiDesigner.xml

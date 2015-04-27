@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="166.0" prefWidth="288.0">
@@ -13,7 +12,7 @@
             <HBox prefHeight="55.0" prefWidth="351.0">
                <children>
                   <Label text="Account Name: " />
-                  <TextField />
+                  <TextField fx:id="accNameField" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" top="20.0" />
@@ -22,7 +21,7 @@
             <HBox prefHeight="68.0" prefWidth="389.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="85.0" text="Balance: " />
-                  <TextField />
+                  <TextField fx:id="balanceField" />
                </children>
                <VBox.margin>
                   <Insets left="10.0" top="20.0" />
