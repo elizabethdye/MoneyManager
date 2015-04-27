@@ -85,7 +85,7 @@ public class MoneyModel {
 		System.out.println("sent request");
 		ArrayList<String> acctsTemp = (ArrayList<String>) result.getResult();
 //		accts = new FXCollections.observableArrayList();
-		System.out.println("HERE@");
+		System.out.println("HERE@getAccts");
 		
 	}
 	
