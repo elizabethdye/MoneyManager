@@ -9,12 +9,12 @@ public class LoginModel {
 	
 	public LoginModel() throws ClassNotFoundException, SQLException{
 		networker = new Networker();
-		addUser("admin", "admin", UserType.ADMIN);
+		addUser("admin", UserType.ADMIN, "admin");
 	}
 	
-	public void addUser(String ID, String password, UserType type) throws SQLException{
+	public void addUser(String ID, UserType type, String password) throws SQLException{
 		DatabaseCommand cmd = DatabaseCommand.ADD_USER;
-		String[] args = {ID, password, type.toString()};
+		String[] args = {ID, type.toString(), password};
 		ServerRequest request = new ServerRequest (cmd, args);
 		networker.sendServerRequest(request);
 	}

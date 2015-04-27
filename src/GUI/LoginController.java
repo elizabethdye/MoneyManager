@@ -42,8 +42,8 @@ public class LoginController {
 	private void initialize() throws ClassNotFoundException, SQLException{
 		model = new LoginModel();
 		networker = model.getNetworker();
-		idField.setText("Ferrer");
-		passwordField.setText("ILoveRobotics");
+		idField.setText("test");
+		passwordField.setText("test");
 	}
 	
 	@FXML

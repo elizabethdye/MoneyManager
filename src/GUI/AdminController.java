@@ -48,7 +48,7 @@ public class AdminController {
 		ID = IDField.getText();
 		password = passwordField.getText();
 		type = userType.getSelectionModel().getSelectedItem();
-		model.addUser(ID, password, UserType.fromString(type));
+		model.addUser(ID, UserType.fromString(type), password);
 		showNewStage("LoginUI.fxml");
 	}
 	

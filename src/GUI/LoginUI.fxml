@@ -8,7 +8,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
    <top>
-      <Label nodeOrientation="LEFT_TO_RIGHT" text="Welcome to GradeBook" translateY="20.0" BorderPane.alignment="CENTER">
+      <Label nodeOrientation="LEFT_TO_RIGHT" text="Welcome to MoneyManager" translateY="20.0" BorderPane.alignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>

@@ -79,6 +79,8 @@ public class ServerRequestThread extends Thread {
     		case GET_BALANCE:
     			result.setResult(db.getBalance(args[0], args[1]));
     			break;
+    		case GET_ACCTS:
+    			result.setResult(db.getAccounts(args[0]));
     	}
     	return result;
     }

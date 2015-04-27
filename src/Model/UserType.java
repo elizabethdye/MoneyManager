@@ -5,6 +5,7 @@ public enum UserType {
 
     public static UserType fromString(String element){
     	element = element.toUpperCase();
+    	System.out.println(element);
         switch (element){
             case "USER":
                 return USER;
