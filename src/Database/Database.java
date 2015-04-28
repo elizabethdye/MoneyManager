@@ -127,8 +127,7 @@ public class Database {
 		String query = "SELECT Balance FROM Balances WHERE UserID = '" + name + "' AND Account = '" + account + "'";
 		ArrayList<String> result = makeQuery(query);
 		if (result.size() == 0) {
-			String insertCommand = "INSERT INTO Balances VALUES('" + name + comma + account + "' , '0.0')";
-			stat.executeUpdate(insertCommand);
+			addAccount(name, account);
 			return 0.0;
 		} else {
 			return Double.parseDouble(result.get(0));
@@ -139,5 +138,10 @@ public class Database {
 		System.out.println("IN DATABASEEEEEEEEE");
 		String query = "SELECT Account FROM Balances WHERE UserID = '" + name + "'";
 		return makeQuery(query);
+	}
+	
+	public void addAccount(String name, String account) throws SQLException {
+		String insertCommand = "INSERT INTO Balances VALUES('" + name + comma + account + "' , '0.0')";
+		stat.executeUpdate(insertCommand);
 	}
 }
