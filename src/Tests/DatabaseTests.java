@@ -101,4 +101,5 @@ public class DatabaseTests {
 		addTwoDeposits();
 		db.createTransfer("User1", "Savings", "Checking", 50.0, "April 1");
 	}
+	
 }
