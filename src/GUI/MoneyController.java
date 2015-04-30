@@ -96,8 +96,8 @@ public class MoneyController {
 
 	@FXML
 	public void handleTransfer(){
-		model.setDate(depDatePick.getValue().toString());
-		model.setAmount(Double.parseDouble(depAmountField.getText()));
+		model.setDate(xferDatePick.getValue().toString());
+		model.setAmount(Double.parseDouble(xferAmountField.getText()));
 		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
 		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
 		model.setCategory(xferCategoryField.getText());
