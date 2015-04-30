@@ -120,11 +120,6 @@ public class MoneyController {
 		model.setUser(name);
 		model.setNetworker(net);
 		accts = model.getAccts();
-//		accts = new ArrayList<String>();
-//		model.accts.add((String) "Checking");
-//		model.accts.add((String) "Savings");
-//		accts.add((String) "Checking");
-//		accts.add((String) "Savings");
 		depAccts = FXCollections.observableArrayList(accts);
 		withAccts = FXCollections.observableArrayList(accts);
 		xferAcctsTo = FXCollections.observableArrayList(accts);
@@ -133,6 +128,7 @@ public class MoneyController {
 		withFromBox.setItems(withAccts);
 		xferFromBox.setItems(xferAcctsFrom);
 		xferToBox.setItems(xferAcctsTo);
+		acctAmounts.setText(model.updateBalances());
 	}
 	
 	public void setModel(MoneyModel model) {

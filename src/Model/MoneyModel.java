@@ -30,6 +30,7 @@ public class MoneyModel {
 	
 	public void setToAcct(String acct) {
 		this.toAcct = acct;
+		System.out.println("ToAcct: " + this.toAcct);
 	}
 	
 	public void setFromAcct(String acct) {
@@ -76,8 +77,8 @@ public class MoneyModel {
 		for( String acct: accts){
 			String[] args = {userID, acct};
 			ServerRequest request = new ServerRequest(cmd, args);
-			String acctAmount = (String) net.sendServerRequest(request).getResult();
-			acctAmounts += acct + ": $" + acctAmount; 
+			Double acctAmount = (Double) net.sendServerRequest(request).getResult();
+			acctAmounts += "\t" + acct + ": $" + acctAmount.toString(); 
 		}
 		
 		return acctAmounts;
