@@ -89,10 +89,8 @@ public class MoneyModel {
 		String[] args = {userID};
 		ServerRequest request = new ServerRequest(cmd, args);
 		ServerRequestResult result = net.sendServerRequest(request);
-		System.out.println("sent request");
 		ArrayList<String> acctsTemp = (ArrayList<String>) result.getResult();
 		accts = FXCollections.observableArrayList(acctsTemp);
-		System.out.println("HERE@getAccts");
 		return accts;
 	}
 	

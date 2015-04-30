@@ -81,7 +81,6 @@ public class ServerRequestThread extends Thread {
     			break;
     		case GET_ACCTS:
     			result.setResult(db.getAccounts(args[0]));
-    			System.out.println("at DBCommands get_accts");
     			break;
     		case ADD_ACCT:
     			db.addAccount(args[0], args[1]);

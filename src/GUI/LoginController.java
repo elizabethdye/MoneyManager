@@ -71,15 +71,12 @@ public class LoginController {
 		AdminController controller = (AdminController)loader.getController();
 		controller.setUser(ID);
 		controller.setModel(model);
-//		controller.setNetworker(networker);
 	}
 	
 	private void startMoneyView() throws IOException{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MoneyUI.fxml"));
 		Parent home_page_parent = (Parent)loader.load();
 		MoneyController controller = (MoneyController)loader.getController();
-		controller.setUser(ID);
-//		controller.setNetworker(networker);
 		Scene home_page_scene = new Scene(home_page_parent);
 		Stage app_stage = (Stage) login.getScene().getWindow();
 		app_stage.setScene(home_page_scene);
