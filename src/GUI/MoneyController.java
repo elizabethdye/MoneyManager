@@ -78,30 +78,30 @@ public class MoneyController {
 
 	@FXML
 	public void handleDeposit(){
-//		model.setDate(depDatePick.getValue().toString());
-//		model.setAmount(Double.parseDouble(depAmountField.getText()));
-//		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
-//		model.deposit();
-//		acctAmounts.setText(model.updateBalances());
+		model.setDate(depDatePick.getValue().toString());
+		model.setAmount(Double.parseDouble(depAmountField.getText()));
+		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
+		model.deposit();
+		acctAmounts.setText(model.updateBalances());
 	}
 
 	@FXML
 	public void handleTransfer(){
-//		model.setDate(depDatePick.getValue().toString());
-//		model.setAmount(Double.parseDouble(depAmountField.getText()));
-//		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
-//		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
-//		model.transfer();
-//		acctAmounts.setText(model.updateBalances());
+		model.setDate(depDatePick.getValue().toString());
+		model.setAmount(Double.parseDouble(depAmountField.getText()));
+		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
+		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
+		model.transfer();
+		acctAmounts.setText(model.updateBalances());
 	}
 
 	@FXML
 	public void handleWithdrawal(){
-//		model.setDate(withDatePick.getValue().toString());
-//		model.setAmount(Double.parseDouble(withAmountField.getText()));
-//		model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
-//		model.withdrawal();
-//		acctAmounts.setText(model.updateBalances());
+		model.setDate(withDatePick.getValue().toString());
+		model.setAmount(Double.parseDouble(withAmountField.getText()));
+		model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
+		model.withdrawal();
+		acctAmounts.setText(model.updateBalances());
 	}
 	public void setUser(String name) {
 		this.userID = name;
@@ -128,7 +128,7 @@ public class MoneyController {
 		this.model = model;
 	}
 
-//	public void setNetworker(Networker net){
-//		this.model.setNetworker(net);
-//	}
+	public void setNetworker(Networker net){
+		this.model.setNetworker(net);
+	}
 }

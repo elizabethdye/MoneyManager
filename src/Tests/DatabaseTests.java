@@ -14,7 +14,7 @@ import Database.Database;
 import Model.UserType;
 
 
-public class DatabaseTests {
+public class DatabaseTests { 
 
 
 	private Database db;

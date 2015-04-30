@@ -52,21 +52,23 @@
                                                 </HBox>
                                                 <HBox prefHeight="28.0" prefWidth="579.0">
                                                    <children>
-                                                      <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
+                                                      <Label prefHeight="20.0" prefWidth="56.0" text="Amount:" translateX="2.0">
                                                          <padding>
                                                             <Insets top="3.0" />
                                                          </padding>
                                                       </Label>
-                                                      <TextField fx:id="depAmountField" promptText="\$" />
+                                                      <TextField fx:id="depAmountField" promptText="\$" translateX="15.0" />
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
-                                                   <VBox.margin>
-                                                      <Insets bottom="10.0" top="10.0" />
-                                                   </VBox.margin>
                                                 </HBox>
-                                                <Button fx:id="Deposit" mnemonicParsing="false" onAction="#handleDeposit" text="Deposit" />
+                                                <HBox prefHeight="28.0" prefWidth="579.0">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </HBox>
+                                                <Button fx:id="Deposit" mnemonicParsing="false" onAction="#handleDeposit" text="Deposit" translateY="10.0" />
                                              </children>
                                           </VBox>
                                        </content>
@@ -101,12 +103,25 @@
                                                       </HBox>
                                                       <HBox prefHeight="28.0" prefWidth="579.0">
                                                          <children>
-                                                            <Label prefHeight="20.0" prefWidth="56.0" text="Amount:">
+                                                            <Label prefHeight="20.0" prefWidth="66.0" text="Category:" translateX="2.0">
                                                                <padding>
                                                                   <Insets top="3.0" />
                                                                </padding>
                                                             </Label>
-                                                            <TextField promptText="\$" fx:id="xferAmountField" />
+                                                            <TextField prefHeight="26.0" prefWidth="202.0" promptText="Enter a category or description." translateX="5.0" fx:id="xferCategoryField" />
+                                                         </children>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                      </HBox>
+                                                      <HBox prefHeight="28.0" prefWidth="579.0">
+                                                         <children>
+                                                            <Label prefHeight="20.0" prefWidth="56.0" text="Amount:" translateX="2.0">
+                                                               <padding>
+                                                                  <Insets top="3.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <TextField promptText="\$" translateX="15.0" fx:id="xferAmountField" />
                                                          </children>
                                                          <opaqueInsets>
                                                             <Insets />
@@ -170,6 +185,19 @@
                                                          <VBox.margin>
                                                             <Insets bottom="10.0" top="10.0" />
                                                          </VBox.margin>
+                                                      </HBox>
+                                                      <HBox prefHeight="28.0" prefWidth="579.0">
+                                                         <children>
+                                                            <Label prefHeight="20.0" prefWidth="66.0" text="Category:" translateX="2.0">
+                                                               <padding>
+                                                                  <Insets top="3.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <TextField fx:id="withCategoryField" prefHeight="26.0" prefWidth="202.0" promptText="Enter a category or description." translateX="5.0" />
+                                                         </children>
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
                                                       </HBox>
                                                       <Button fx:id="Withdrawal" mnemonicParsing="false" onAction="#handleWithdrawal" text="Withdrawal" />
                                                    </children>
