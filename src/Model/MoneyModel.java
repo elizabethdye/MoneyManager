@@ -13,7 +13,9 @@ public class MoneyModel {
 	String toAcct;
 	String fromAcct;
 	Double amount;
+	String category;
 	String date;
+	
 	
 	public ObservableList<String> accts;
 	String acctAmounts;
@@ -36,6 +38,10 @@ public class MoneyModel {
 	
 	public void setAmount(Double amount) {
 		this.amount = amount;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	public void setDate(String date) {
@@ -77,16 +83,16 @@ public class MoneyModel {
 		return acctAmounts;
 	}
 
-	public void getAccts(){
+	public  ObservableList<String> getAccts(){
 		DatabaseCommand cmd = DatabaseCommand.GET_ACCTS;
 		String[] args = {userID};
 		ServerRequest request = new ServerRequest(cmd, args);
 		ServerRequestResult result = net.sendServerRequest(request);
 		System.out.println("sent request");
 		ArrayList<String> acctsTemp = (ArrayList<String>) result.getResult();
-//		accts = new FXCollections.observableArrayList();
+		accts = FXCollections.observableArrayList(acctsTemp);
 		System.out.println("HERE@getAccts");
-		
+		return accts;
 	}
 	
 }

@@ -32,6 +32,9 @@ public class MoneyController {
 	
 	@FXML
 	TextField depAmountField;
+	
+	@FXML
+	TextField depCategoryField;
 
 	@FXML
 	Button Withdrawal;
@@ -44,6 +47,9 @@ public class MoneyController {
 	
 	@FXML
 	TextField withAmountField;
+	
+	@FXML
+	TextField withCategoryField;
 	
 	@FXML
 	Button Transfer;
@@ -60,10 +66,13 @@ public class MoneyController {
 	@FXML
 	TextField xferAmountField;
 	
+	@FXML
+	TextField xferCategoryField;
+	
 	String userID;
 	MoneyModel model;
 	Networker net;
-	ArrayList<String> accts;
+	ObservableList<String> accts;
 	ObservableList<String> depAccts;
 	ObservableList<String> withAccts;
 	ObservableList<String> xferAcctsTo;
@@ -91,6 +100,7 @@ public class MoneyController {
 		model.setAmount(Double.parseDouble(depAmountField.getText()));
 		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
 		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
+		model.setCategory(xferCategoryField.getText());
 		model.transfer();
 		acctAmounts.setText(model.updateBalances());
 	}
@@ -100,6 +110,7 @@ public class MoneyController {
 		model.setDate(withDatePick.getValue().toString());
 		model.setAmount(Double.parseDouble(withAmountField.getText()));
 		model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
+		model.setCategory(withCategoryField.getText());
 		model.withdrawal();
 		acctAmounts.setText(model.updateBalances());
 	}
@@ -108,12 +119,12 @@ public class MoneyController {
 		model = new MoneyModel();
 		model.setUser(name);
 		model.setNetworker(net);
-//		model.getAccts();
-		accts = new ArrayList<String>();
+		accts = model.getAccts();
+//		accts = new ArrayList<String>();
 //		model.accts.add((String) "Checking");
 //		model.accts.add((String) "Savings");
-		accts.add((String) "Checking");
-		accts.add((String) "Savings");
+//		accts.add((String) "Checking");
+//		accts.add((String) "Savings");
 		depAccts = FXCollections.observableArrayList(accts);
 		withAccts = FXCollections.observableArrayList(accts);
 		xferAcctsTo = FXCollections.observableArrayList(accts);

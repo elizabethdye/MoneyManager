@@ -22,15 +22,25 @@ public class LoginModel {
 	}
 	
 	private void addAccts(String ID){
-		DatabaseCommand cmd = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args = {ID, "Checking", "1.0", "4/25/2015"};
-		ServerRequest request = new ServerRequest(cmd, args);
-		networker.sendServerRequest(request);
+		DatabaseCommand cmd1 = DatabaseCommand.ADD_ACCT;
+		String[] args1 = {ID, "Checking"};
+		ServerRequest request1 = new ServerRequest(cmd1, args1);
+		networker.sendServerRequest(request1);
 		
-		cmd = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args2 = {ID, "Savings", "1.0", "4/25/2015"};
-		request = new ServerRequest(cmd, args2);
-		networker.sendServerRequest(request);
+		DatabaseCommand cmd2 = DatabaseCommand.ADD_ACCT;
+		String[] args2 = {ID, "Saving"};
+		ServerRequest request2 = new ServerRequest(cmd2, args2);
+		networker.sendServerRequest(request2);
+		
+		DatabaseCommand cmd3 = DatabaseCommand.CREATE_DEPOSIT;
+		String[] args3 = {ID, "Checking", "1.0", "20150415"};
+		ServerRequest request3 = new ServerRequest(cmd3, args3);
+		networker.sendServerRequest(request3);
+		
+		DatabaseCommand cmd4 = DatabaseCommand.CREATE_DEPOSIT;
+		String[] args4 = {ID, "Savings", "1.0", "20150415"};
+		ServerRequest request4 = new ServerRequest(cmd4, args4);
+		networker.sendServerRequest(request4);
 	}
 	public Networker getNetworker() {
 		return networker;

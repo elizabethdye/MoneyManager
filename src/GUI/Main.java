@@ -17,7 +17,7 @@ public class Main extends Application {
 			BorderPane root = (BorderPane) loader.load();
 			
 			Scene scene = new Scene(root,640,500);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("MoneyUI.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
