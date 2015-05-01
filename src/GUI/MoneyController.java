@@ -5,18 +5,19 @@ import Networking.Networker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 public class MoneyController {
+
+	@FXML
+	Accordion actionContainer;
+	@FXML
+	TitledPane depPane;
 
 	@FXML
 	Label acctAmounts;
@@ -68,7 +69,10 @@ public class MoneyController {
 	
 	@FXML
 	TextField xferCategoryField;
-	
+
+
+
+	Main main;
 	String userID;
 	MoneyModel model;
 	Networker net;
@@ -82,9 +86,47 @@ public class MoneyController {
 
 	@FXML
 	public void initialize(){
+
 		net = new Networker();
+
+		actionContainer.setExpandedPane(depPane);
+		depDatePick.setValue(LocalDate.now());
+		xferDatePick.setValue(LocalDate.now());
+		withDatePick.setValue(LocalDate.now());
+
 	}
 
+	@FXML
+	public void handleAccountAdd(){
+		String name = "", bal="";
+		TextInputDialog nameDialog = new TextInputDialog("Account Name");
+		nameDialog.setHeaderText("Account Name");
+		nameDialog.setTitle("Account Name");
+		nameDialog.setContentText("Please enter the name of the account");
+		Optional<String> result = nameDialog.showAndWait();
+		if (result.isPresent()){
+			name = result.get();
+
+			TextInputDialog balDialog = new TextInputDialog("Current Balance");
+			balDialog.setHeaderText("Current Balance");
+			balDialog.setTitle("Current Balance");
+			balDialog.setContentText("Please enter the current balance the account");
+			Optional<String> balance = balDialog.showAndWait();
+			if (balance.isPresent()){
+				bal = balance.get();
+			}else{
+				return;
+			}
+		}
+		if (!"".equals(name) && !"".equals(bal)){
+			if (model!= null){model.addAcct(name);}
+			else {
+				System.out.println("it's fucking null");
+			}
+			updateAccts();
+		}
+
+	}
 	@FXML
 	public void handleDeposit(){
 		model.setDate(depDatePick.getValue().toString());
@@ -115,10 +157,16 @@ public class MoneyController {
 		acctAmounts.setText(model.updateBalances());
 	}
 	public void setUser(String name) {
-		this.userID = name;
+
 		model = new MoneyModel();
 		model.setUser(name);
 		model.setNetworker(net);
+		this.setModel(model);
+		this.userID = name;
+		updateAccts();
+	}
+
+	public void updateAccts() {
 		accts = model.getAccts();
 		depAccts = FXCollections.observableArrayList(accts);
 		withAccts = FXCollections.observableArrayList(accts);
@@ -128,13 +176,15 @@ public class MoneyController {
 		withFromBox.setItems(withAccts);
 		xferFromBox.setItems(xferAcctsFrom);
 		xferToBox.setItems(xferAcctsTo);
+		String a = model.updateBalances();
 		acctAmounts.setText(model.updateBalances());
+		acctAmounts.setId("balance-amount");
 	}
-	
+
 	public void setModel(MoneyModel model) {
 		this.model = model;
 	}
-
+	public void setMain(Main main) {this.main = main;}
 	public void setNetworker(Networker net){
 		this.model.setNetworker(net);
 	}
