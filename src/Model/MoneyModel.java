@@ -1,7 +1,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
+import Database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -93,5 +95,15 @@ public class MoneyModel {
 		accts = FXCollections.observableArrayList(acctsTemp);
 		return accts;
 	}
+
+	public void addAcct(String accName){
+		DatabaseCommand cmd = DatabaseCommand.ADD_ACCT;
+		System.out.println("Here");
+		String[] args = {userID,accName};
+		ServerRequest request = new ServerRequest(cmd, args);
+		ServerRequestResult result = net.sendServerRequest(request);
+
+	}
+
 	
 }

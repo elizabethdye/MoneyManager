@@ -2,6 +2,7 @@ package GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -9,13 +10,16 @@ import javafx.scene.layout.VBox;
 
 
 public class Main extends Application {
+
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("LoginUI.fxml"));
 			BorderPane root = (BorderPane) loader.load();
-			
+			//AnchorPane root = (AnchorPane) loader.load();
+
 			Scene scene = new Scene(root,640,500);
 			scene.getStylesheets().add(getClass().getResource("MoneyUI.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -28,4 +32,6 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+
 }
