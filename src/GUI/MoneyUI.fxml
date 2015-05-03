@@ -6,17 +6,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="603.0" stylesheets="@MoneyUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MoneyController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="603.0" styleClass="AnchorPane" stylesheets="@MoneyUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MoneyController">
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="435.0" minWidth="603.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox minHeight="45.0" minWidth="200.0" prefHeight="45.0" prefWidth="603.0" VBox.vgrow="NEVER">
+            <HBox minHeight="45.0" minWidth="200.0" prefHeight="45.0" prefWidth="603.0" styleClass="HBox" stylesheets="@MoneyUI.css" VBox.vgrow="NEVER">
                <children>
-                  <Label id="balance-label" stylesheets="@MoneyUI.css" text="Account Balances:" />
-                  <Label id="balance-amount" fx:id="acctAmounts" prefHeight="48.0" prefWidth="443.0" stylesheets="@MoneyUI.css" text="TEST" />
+                  <Label id="balance-label" prefHeight="46.0" prefWidth="137.0" stylesheets="@MoneyUI.css" text="Account Balances:" />
+                  <Label id="balance-amount" fx:id="acctAmounts" prefHeight="45.0" prefWidth="455.0" stylesheets="@MoneyUI.css" text="TEST" />
                </children>
             </HBox>
-            <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <TabPane styleClass="background" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                <tabs>
                   <Tab text="Money">
                      <content>
@@ -26,7 +26,7 @@
                                  <panes>
                                     <TitledPane fx:id="depPane" animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Deposit">
                                        <content>
-                                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="295.0" prefWidth="587.0">
+                                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="295.0" prefWidth="587.0" styleClass="VBox">
                                              <children>
                                                 <HBox prefHeight="49.0" prefWidth="579.0">
                                                    <children>
@@ -82,7 +82,7 @@
                                     </TitledPane>
                                     <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Transfer">
                                        <content>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="601.0">
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="601.0" styleClass="AnchorPane">
                                              <children>
                                                 <VBox prefHeight="279.0" prefWidth="596.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
@@ -169,7 +169,7 @@
                                     </TitledPane>
                                     <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="603.0" text="Withdrawal">
                                        <content>
-                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="AnchorPane">
                                              <children>
                                                 <VBox prefHeight="279.0" prefWidth="596.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
@@ -211,7 +211,7 @@
                                                                   <Insets bottom="10.0" left="10.0" top="3.0" />
                                                                </HBox.margin>
                                                             </Label>
-                                                            <TextField fx:id="withCategoryField" prefHeight="26.0" prefWidth="202.0" promptText="Enter a category or description." translateX="5.0" />
+                                                            <TextField fx:id="withCategoryField" prefHeight="29.0" prefWidth="204.0" promptText="Enter a category or description." translateX="5.0" />
                                                          </children>
                                                          <opaqueInsets>
                                                             <Insets />
@@ -273,7 +273,7 @@
                                     </AnchorPane>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                        <children>
-                                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="618.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="618.0" prefWidth="593.0" styleClass="VBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <LineChart fx:id="lineChart">
                                                    <xAxis>

@@ -1,7 +1,11 @@
 .background { 
-	-fx-background-color: white;
+	-fx-background-color: transparent, #bababa, transparent, white;
+	
 }
+.AnchorPane{
+	-fx-background-color: transparent, #bababa, transparent, white;
 
+}
 .button {
     -fx-padding: 5 22 5 22;   
     -fx-border-style: null; 
@@ -123,4 +127,20 @@
     -fx-background-radius: 0, 0, 0, 0;
     -fx-padding: 0.166667em; /* 2 */
     -fx-border-style: solid;
+}
+
+#db-wiper {
+	-fx-text-fill: red;
+
+}
+.tab:top {
+	-fx-background-color: transparent, #bababa, transparent, white;
+
+}
+.tab-label{
+	-fx-background-color: transparent, #bababa, transparent, white;;
+}
+.tab-header-background{
+	-fx-background-color: transparent, #bababa, transparent, white;
+	-fx-border-style: none;
 }
