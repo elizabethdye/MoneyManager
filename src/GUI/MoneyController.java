@@ -164,7 +164,6 @@ public class MoneyController {
 
 	}
 	public void setUser(String name) {
-
 		model = new MoneyModel();
 		model.setUser(name);
 		model.setNetworker(net);
