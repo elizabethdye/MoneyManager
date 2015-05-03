@@ -44,6 +44,7 @@ public class LoginController {
 		networker = model.getNetworker();
 		idField.setText("test");
 		passwordField.setText("test");
+
 	}
 	
 	@FXML

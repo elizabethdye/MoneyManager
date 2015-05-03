@@ -1,10 +1,12 @@
 .background { 
-	-fx-background-color: transparent, #bababa, transparent, white;
-	
+	-fx-background-color: transparent, #bababa, transparent, white;	
 }
 .AnchorPane{
 	-fx-background-color: transparent, #bababa, transparent, white;
-
+	-fx-border-style: solid;
+}
+.HBox{
+	-fx-background-color: transparent, #bababa, transparent, white;
 }
 .button {
     -fx-padding: 5 22 5 22;   
@@ -133,14 +135,40 @@
 	-fx-text-fill: red;
 
 }
+.background:top{
+	-fx-border-style:none;
+}
 .tab:top {
 	-fx-background-color: transparent, #bababa, transparent, white;
-
+	-fx-border-style: solid;
+}
+.tab:top:selected{
+	-fx-background-color: #d8d8d8;
+}
+.tab:top:selected .tab-container .tab-label{
+	-fx-background-color: #d8d8d8;
 }
 .tab-label{
 	-fx-background-color: transparent, #bababa, transparent, white;;
 }
+.tab-label .text{
+	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+	-fx-font-size: 10pt;
+}
 .tab-header-background{
 	-fx-background-color: transparent, #bababa, transparent, white;
-	-fx-border-style: none;
+
+}
+.VBox{
+	-fx-background-color: transparent, #bababa, transparent, white;
+}
+.title{
+	-fx-border-style: solid;
+	-fx-background-color: transparent, #bababa, transparent, white;
+	-fx-background-radius: 0, 0, 0, 0;
+	-fx-padding: 0.166667em; /* 2 */
+}
+.title .text {
+	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+	-fx-font-size: 10pt;
 }

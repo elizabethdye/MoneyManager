@@ -20,13 +20,13 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Login ID" translateX="190.0" translateY="50.0" />
-                  <TextField fx:id="idField" translateX="200.0" translateY="45.0" />
+                  <TextField fx:id="idField" onAction="#login" translateX="200.0" translateY="45.0" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Password" translateX="180.0" translateY="10.0" />
-                  <PasswordField fx:id="passwordField" translateX="190.0" translateY="3.0" />
+                  <PasswordField fx:id="passwordField" onAction="#login" translateX="190.0" translateY="3.0" />
                </children>
             </HBox>
             <Button fx:id="login" mnemonicParsing="false" onAction="#login" text="Login" translateX="275.0" translateY="-30.0" />

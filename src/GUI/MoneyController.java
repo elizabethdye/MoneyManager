@@ -159,6 +159,8 @@ public class MoneyController {
 		model.setCategory(withCategoryField.getText());
 		model.withdrawal();
 		acctAmounts.setText(model.updateBalances());
+		System.out.println(model.updateBalances());
+
 	}
 	public void setUser(String name) {
 
