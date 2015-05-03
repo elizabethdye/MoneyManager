@@ -5,12 +5,12 @@ import Networking.Networker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 public class MoneyController {
 
@@ -70,7 +70,11 @@ public class MoneyController {
 	@FXML
 	TextField xferCategoryField;
 
+	@FXML
+	PieChart pieChart;
 
+	@FXML
+	LineChart lineChart;
 
 	Main main;
 	String userID;
@@ -179,8 +183,58 @@ public class MoneyController {
 		String a = model.updateBalances();
 		acctAmounts.setText(model.updateBalances());
 		acctAmounts.setId("balance-amount");
+		populateChart();
 	}
 
+	public void populateChart() {
+		populatePieChart();
+		populateLineChart();
+	}
+
+	private void populateLineChart() {
+//		TODO: Awaiting methods from model package
+
+		return;
+
+	}
+
+	private void populatePieChart() {
+//		TODO: Awaiting methods from model package
+//		ArrayList<String> categories = model.getCatergories();
+//		Map<String, Double> amountPerCat = new HashMap<>();
+//		for (String cat : categories){
+//			ArrayList<Double> vals = model.getTransactionsForCategory(cat);
+//			Double val = sumArrayList(vals);
+//			amountPerCat.put(cat, val);
+//		}
+		System.out.println("Tesing chart data");
+		Map<String, Double> amountPerCat = new HashMap<>();
+		amountPerCat.put("Apple",10.0);
+		amountPerCat.put("Banana",20.0);
+		amountPerCat.put("Cherry",40.0);
+		amountPerCat.put("Duriant",50.5);
+		amountPerCat.put("Energy",10.0);
+
+
+		ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
+		for (Map.Entry<String,Double> entry : amountPerCat.entrySet()){
+			PieChart.Data data = new PieChart.Data(entry.getKey(), entry.getValue());
+			chartData.add(data);
+		}
+		pieChart.setData(chartData);
+		pieChart.setTitle("Spending based on categories");
+
+
+
+	}
+
+	private Double sumArrayList(ArrayList<Double> vals){
+		Double res = 0.00;
+		for (Double val:vals){
+			res += val;
+		}
+		return res;
+	}
 	public void setModel(MoneyModel model) {
 		this.model = model;
 	}
