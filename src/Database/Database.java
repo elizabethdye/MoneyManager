@@ -143,4 +143,20 @@ public class Database {
 		String insertCommand = "INSERT INTO Balances VALUES('" + name + comma + account + "' , '0.0')";
 		stat.executeUpdate(insertCommand);
 	}
+
+	public ArrayList<String> getCategories(String userID, String account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<String> getTransactions(String userID, String account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Double> getTransactionsForCategory(String userID, String account, String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

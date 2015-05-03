@@ -3,7 +3,9 @@ package Model;
 public enum DatabaseCommand {
 	CREATE_TABLES, GET_USER_TYPE, ADD_USER, DELETE_TABLES, 
 	CREATE_TRANSFER, CREATE_WITHDRAWAL, CREATE_DEPOSIT, 
-	GET_BALANCE, UPDATE_BALANCE, CREATE_TRANSACTION, GET_ACCTS, ADD_ACCT;
+	GET_BALANCE, UPDATE_BALANCE, CREATE_TRANSACTION, 
+	GET_ACCTS, ADD_ACCT, GET_TRANSACTIONS,GET_T_FOR_CAT,
+	GET_CATEGORIES;
 	
 	public static DatabaseCommand fromString(String command){
     	command = command.toUpperCase();
@@ -32,6 +34,12 @@ public enum DatabaseCommand {
             	return DELETE_TABLES;
             case "ADD_ACCT":
             	return ADD_ACCT;
+            case "GET_TRANSACTIONS":
+            	return GET_TRANSACTIONS;
+            case "GET_CATEGORIES":
+            	return GET_CATEGORIES;
+            case "GET_T_FOR_CAT":
+            	return GET_T_FOR_CAT;
         }
         return null;
     }

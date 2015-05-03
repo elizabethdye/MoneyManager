@@ -1,8 +1,6 @@
-package GUI;
+package Model;
 
 import java.util.ArrayList;
-
-import Model.TransactionInfo;
 
 public class TransactionParser {
 	String[] parts;
