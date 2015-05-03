@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import Model.DatabaseCommand;
+import Model.ErrorMessage;
 import Model.LoginModel;
 import Model.ServerRequest;
 import Model.UserType;
@@ -101,16 +102,18 @@ public class LoginController {
 	
 	@FXML
 	public void errorWindow(){
-		Stage newStage = new Stage();
-		VBox root = new VBox();
-		Label nameField = new Label("\n     Invalid username/password.     \n ");
-		root.getChildren().addAll(nameField);
-		Scene stageScene = new Scene(root);
-		VBox.setVgrow(root, Priority.ALWAYS);
-		newStage.setScene(stageScene);
-		newStage.show();
-		newStage.requestFocus();
-		newStage.setTitle("ERROR");
+		ErrorWindow window = new ErrorWindow();
+		window.showError(ErrorMessage.USERPASSWORD);
+//		Stage newStage = new Stage();
+//		VBox root = new VBox();
+//		Label nameField = new Label("\n     Invalid username/password.     \n ");
+//		root.getChildren().addAll(nameField);
+//		Scene stageScene = new Scene(root);
+//		VBox.setVgrow(root, Priority.ALWAYS);
+//		newStage.setScene(stageScene);
+//		newStage.show();
+//		newStage.requestFocus();
+//		newStage.setTitle("ERROR");
 	}
 
 }

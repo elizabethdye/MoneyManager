@@ -28,7 +28,7 @@ public class LoginModel {
 		networker.sendServerRequest(request1);
 		
 		DatabaseCommand cmd2 = DatabaseCommand.ADD_ACCT;
-		String[] args2 = {ID, "Saving"};
+		String[] args2 = {ID, "Savings"};
 		ServerRequest request2 = new ServerRequest(cmd2, args2);
 		networker.sendServerRequest(request2);
 		

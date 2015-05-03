@@ -30,7 +30,6 @@ public enum ErrorMessage {
 				return "That account exists already, please choose another name.";
 			case ACCT_SAME:
 				return "You entered the same account twice, please choose two different accounts for the transfer.";
-		
 		}
 		return null;
 	}

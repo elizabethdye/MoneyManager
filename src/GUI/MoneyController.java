@@ -131,6 +131,7 @@ public class MoneyController {
 		}
 
 	}
+	
 	@FXML
 	public void handleDeposit(){
 		model.setDate(depDatePick.getValue().toString());

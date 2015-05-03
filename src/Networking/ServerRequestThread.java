@@ -85,6 +85,7 @@ public class ServerRequestThread extends Thread {
     		case ADD_ACCT:
     			db.addAccount(args[0], args[1]);
     			result.setResult(null);
+    			break;
     	}
     	return result;
     }
