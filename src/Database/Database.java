@@ -145,7 +145,6 @@ public class Database {
 		stat.executeUpdate(insertCommand);
 	}	
 
-	
 	public ArrayList<String> getCategories(String name, String account) throws ClassNotFoundException, SQLException {
 		String query = "SELECT Category FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
 		return makeQuery(query);
@@ -161,16 +160,23 @@ public class Database {
 		return toReturn;
 	}
 	
-//TODO: Still working on this one
 	public ArrayList<String> getTransactions(String name, String account) throws SQLException {
-		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE TransactionType <> '" + TType.DEPOSIT.toString() +"'";
+		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE TransactionType <> '" + TType.DEPOSIT.toString() +"' ORDER BY Date";
         ResultSet rs = stat.executeQuery(query);
-        //rs.getObject();
+        String separator = "~;~";
 		ArrayList<String> toReturn = new ArrayList<String>();
+        while (rs.next()) {
+        	String type = rs.getString("TransactionType");
+        	Double amount = rs.getDouble("Amount");
+        	String category = rs.getString("Category");
+        	String date = rs.getString("Date");
+        	String transactionVal = type + separator +
+        			amount.toString() + separator +
+        			category + separator +
+        			date;
+        	toReturn.add(transactionVal);
+        }
 		return toReturn;
 	}
-//	    return ArrayList<String>(transaction)
-//	        transaction: (String) TType type~;~amount~;~category~;~date
-//	        preferably sorted newest to oldest
 
 }
