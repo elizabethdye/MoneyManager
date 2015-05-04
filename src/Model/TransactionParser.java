@@ -13,7 +13,7 @@ public class TransactionParser {
 	
 	public void setInfo(String[] parts, TransactionInfo t){
 		t.setType(parts[0]);
-		t.setAmount(parts[1]);
+		t.setAmount(parts[1]); 
 		t.setCategory(parts[2]);
 		t.setDate(parts[3]);
 	}
@@ -23,7 +23,9 @@ public class TransactionParser {
 			parseString(transaction);
 			TransactionInfo t = new TransactionInfo();
 			setInfo(parts, t);
+			System.out.println(t.getDate());
 			transactions.add(t);
+			System.out.println("added transaction");
 		}
 		return transactions;
 	}

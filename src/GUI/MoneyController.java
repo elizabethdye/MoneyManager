@@ -91,9 +91,8 @@ public class MoneyController {
 
 	@FXML
 	public void initialize(){
-
+ 
 		net = new Networker();
-
 		actionContainer.setExpandedPane(depPane);
 		depDatePick.setValue(LocalDate.now());
 		xferDatePick.setValue(LocalDate.now());
@@ -119,7 +118,7 @@ public class MoneyController {
 			Optional<String> balance = balDialog.showAndWait();
 			if (balance.isPresent()){
 				bal = balance.get();
-			}else{
+			}else{ 
 				return;
 			}
 		}
@@ -186,7 +185,7 @@ public class MoneyController {
 	}
 	
 	private boolean checkAmount(String amount){
-		if(amount.equals("\\d+")){
+		if(amount.equals("\\d+") || amount.contains("-")){
 			return true;
 		}
 		else{

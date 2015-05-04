@@ -33,15 +33,16 @@ public class LoginModel {
 		networker.sendServerRequest(request2);
 		
 		DatabaseCommand cmd3 = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args3 = {ID, "Checking", "1.0", "20150415"};
+		String[] args3 = {ID, "Checking", "1.0", "2015/04/15"};
 		ServerRequest request3 = new ServerRequest(cmd3, args3);
 		networker.sendServerRequest(request3);
 		
 		DatabaseCommand cmd4 = DatabaseCommand.CREATE_DEPOSIT;
-		String[] args4 = {ID, "Savings", "1.0", "20150415"};
+		String[] args4 = {ID, "Savings", "1.0", "2015/04/15"};
 		ServerRequest request4 = new ServerRequest(cmd4, args4);
 		networker.sendServerRequest(request4);
 	}
+	
 	public Networker getNetworker() {
 		return networker;
 	}

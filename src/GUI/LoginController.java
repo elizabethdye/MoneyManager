@@ -45,7 +45,6 @@ public class LoginController {
 		networker = model.getNetworker();
 		idField.setText("test");
 		passwordField.setText("test");
-
 	}
 	
 	@FXML
@@ -104,16 +103,6 @@ public class LoginController {
 	public void errorWindow(){
 		ErrorWindow window = new ErrorWindow();
 		window.showError(ErrorMessage.USERPASSWORD);
-//		Stage newStage = new Stage();
-//		VBox root = new VBox();
-//		Label nameField = new Label("\n     Invalid username/password.     \n ");
-//		root.getChildren().addAll(nameField);
-//		Scene stageScene = new Scene(root);
-//		VBox.setVgrow(root, Priority.ALWAYS);
-//		newStage.setScene(stageScene);
-//		newStage.show();
-//		newStage.requestFocus();
-//		newStage.setTitle("ERROR");
 	}
 
 }
