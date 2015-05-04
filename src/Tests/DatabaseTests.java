@@ -98,8 +98,10 @@ public class DatabaseTests {
 		assertEquals(savingsCategories.size(), 1);
 		assertEquals(checkingCategories.get(0), "Groceries");
 		assertEquals(savingsCategories.get(0), "Rent");
-
-
+	}
+	
+	@Test
+	public void testGetCategoriesMultiple() {
 		
 	}
 	
@@ -116,6 +118,16 @@ public class DatabaseTests {
 	public void addTransfer() throws ClassNotFoundException, SQLException {
 		addTwoDeposits();
 		db.createTransfer("User1", "Savings", "Checking", 50.0, "April 1");
+	}
+	
+	public void addMultipleCategories() throws ClassNotFoundException, SQLException {
+		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Rent", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Movies", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Video Games", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Travel", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
 	}
 	
 	
