@@ -13,7 +13,7 @@
             <HBox minHeight="45.0" minWidth="200.0" prefHeight="45.0" prefWidth="603.0" styleClass="HBox" stylesheets="@MoneyUI.css" VBox.vgrow="NEVER">
                <children>
                   <Label id="balance-label" prefHeight="46.0" prefWidth="137.0" stylesheets="@MoneyUI.css" text="Account Balances:" />
-                  <TextArea fx:id="acctAmounts" editable="false" prefHeight="46.0" prefWidth="459.0" />
+                  <TextArea fx:id="acctAmounts" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="459.0" />
                </children>
             </HBox>
             <TabPane styleClass="background" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">

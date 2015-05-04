@@ -111,6 +111,11 @@ public class MoneyController {
 		withMessage.setText("");
 		xferMessage.setText("");
 
+		toBoxDep.setValue("Checking");
+		withFromBox.setValue("Checking");
+		xferFromBox.setValue("Savings");
+		xferToBox.setValue("Checking");
+
 	}
 
 	@FXML
