@@ -124,9 +124,11 @@ public class MoneyController {
 			}
 		}
 		if (!"".equals(name) && !"".equals(bal)){
-			if (model!= null){model.addAcct(name);}
+			if (model != null && !model.checkExists(name)){
+				model.addAcct(name);
+			}
 			else {
-				System.out.println("it's fucking null");
+				showError(ErrorMessage.ACCT_EXISTS);
 			}
 			updateAccts();
 		}
@@ -144,24 +146,38 @@ public class MoneyController {
 
 	@FXML
 	public void handleTransfer(){
-		model.setDate(xferDatePick.getValue().toString());
-		model.setAmount(Double.parseDouble(xferAmountField.getText()));
-		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
-		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
-		model.setCategory(xferCategoryField.getText());
-		model.transfer();
-		acctAmounts.setText(model.updateBalances());
+		if(checkAmount(xferAmountField.getText())){
+			model.setDate(xferDatePick.getValue().toString());
+			model.setAmount(Double.parseDouble(xferAmountField.getText()));
+			model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
+			model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
+			if(!model.checkAccts()){
+				model.setCategory(xferCategoryField.getText());
+				model.transfer();
+				acctAmounts.setText(model.updateBalances());
+			}
+			else{
+				showError(ErrorMessage.ACCT_SAME);
+			}
+		}
+		else{
+			showError(ErrorMessage.AMOUNT);
+		}
 	}
 
 	@FXML
 	public void handleWithdrawal(){
-		model.setDate(withDatePick.getValue().toString());
-		model.setAmount(Double.parseDouble(withAmountField.getText()));
-		model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
-		model.setCategory(withCategoryField.getText());
-		model.withdrawal();
-		acctAmounts.setText(model.updateBalances());
-		System.out.println(model.updateBalances());
+		if(checkAmount(withAmountField.getText())){
+			model.setDate(withDatePick.getValue().toString());
+			model.setAmount(Double.parseDouble(withAmountField.getText()));
+			model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
+			model.setCategory(withCategoryField.getText());
+			model.withdrawal();
+			acctAmounts.setText(model.updateBalances());
+		}
+		else{
+			showError(ErrorMessage.AMOUNT);
+		}
 	}
 	
 	public void showError(ErrorMessage errorType){
@@ -169,7 +185,7 @@ public class MoneyController {
 		window.showError(errorType);
 	}
 	
-	private boolean checkAmount(Double amount){
+	private boolean checkAmount(String amount){
 		if(amount.equals("\\d+")){
 			return true;
 		}
@@ -184,7 +200,7 @@ public class MoneyController {
 		this.setModel(model);
 		this.userID = name;
 		updateAccts();
-	}
+	} 
 
 	public void updateAccts() {
 		accts = model.getAccts();
