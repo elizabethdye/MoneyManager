@@ -139,24 +139,38 @@ public class Database {
 		return makeQuery(query);
 	}
 	
+	//Check to see if account is created yet
 	public void addAccount(String name, String account) throws SQLException {
 		String insertCommand = "INSERT INTO Balances VALUES('" + name + comma + account + "' , '0.0')";
 		stat.executeUpdate(insertCommand);
-	}
+	}	
 
-	public ArrayList<String> getCategories(String userID, String account) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<String> getTransactions(String userID, String account) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<Double> getTransactionsForCategory(String userID, String account, String category) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ArrayList<String> getCategories(String name, String account) throws ClassNotFoundException, SQLException {
+		String query = "SELECT Category FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
+		return makeQuery(query);
 	}
 	
+	public ArrayList<Double> getTransactionsForCategory(String name, String account, String category) throws ClassNotFoundException, SQLException {
+		String query = "SELECT Amount FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE Category = '" + category + "'";
+		ArrayList<String> result = makeQuery(query);
+		ArrayList<Double> toReturn = new ArrayList<Double>();
+		for (String s: result) {
+			toReturn.add(Double.parseDouble(s));
+		}
+		return toReturn;
+	}
+	
+//TODO: Still working on this one
+	public ArrayList<String> getTransactions(String name, String account) throws SQLException {
+		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE TransactionType <> '" + TType.DEPOSIT.toString() +"'";
+        ResultSet rs = stat.executeQuery(query);
+        //rs.getObject();
+		ArrayList<String> toReturn = new ArrayList<String>();
+		return toReturn;
+	}
+//	    return ArrayList<String>(transaction)
+//	        transaction: (String) TType type~;~amount~;~category~;~date
+//	        preferably sorted newest to oldest
+
 }
