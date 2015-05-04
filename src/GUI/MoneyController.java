@@ -216,20 +216,23 @@ public class MoneyController {
 
 	private void populatePieChart() {
 //		TODO: Awaiting methods from model package
-//		ArrayList<String> categories = model.getCatergories();
-//		Map<String, Double> amountPerCat = new HashMap<>();
-//		for (String cat : categories){
-//			ArrayList<Double> vals = model.getTransactionsForCategory(cat);
-//			Double val = sumArrayList(vals);
-//			amountPerCat.put(cat, val);
-//		}
-		System.out.println("Tesing chart data");
+		System.out.println("GetCat? ");
+		ArrayList<String> categories = model.getCategories("Checking");
+		System.out.println("DOnE");
 		Map<String, Double> amountPerCat = new HashMap<>();
-		amountPerCat.put("Apple",10.0);
-		amountPerCat.put("Banana",20.0);
-		amountPerCat.put("Cherry",40.0);
-		amountPerCat.put("Duriant",50.5);
-		amountPerCat.put("Energy",10.0);
+		for (String cat : categories){
+			ArrayList<Double> vals = model.getTransactionsForCategory("Checking",cat);
+			System.out.println("ASDASD");
+			Double val = sumArrayList(vals);
+			amountPerCat.put(cat, val);
+		}
+//		System.out.println("Tesing chart data");
+//		Map<String, Double> amountPerCat = new HashMap<>();
+//		amountPerCat.put("Apple",10.0);
+//		amountPerCat.put("Banana",20.0);
+//		amountPerCat.put("Cherry",40.0);
+//		amountPerCat.put("Duriant",50.5);
+//		amountPerCat.put("Energy",10.0);
 
 
 		ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();

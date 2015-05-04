@@ -3,7 +3,6 @@ package Tests;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Database.Database;
-import Model.TType;
 import Model.UserType;
 
 
