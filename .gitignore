@@ -10,3 +10,15 @@
 MoneyManager.iml
 .idea/libraries/sqlite_jdbc_3_8_7.xml
 .idea/uiDesigner.xml
+db
+db
+out/production/MoneyManager/Database/Database.class
+*.class
+out/production/MoneyManager/GUI/AdminUI.fxml
+out/production/MoneyManager/GUI/application.css
+out/production/MoneyManager/GUI/LoginUI.fxml
+out/production/MoneyManager/GUI/MoneyUI.css
+out/production/MoneyManager/GUI/MoneyUI.fxml
+db
+db
+db
