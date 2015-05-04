@@ -60,7 +60,7 @@ public class MoneyModel {
 	
 	public void withdrawal(){
 		DatabaseCommand cmd = DatabaseCommand.CREATE_WITHDRAWAL;
-		String[] args = {userID, fromAcct, amount.toString(), date};
+		String[] args = {userID, fromAcct, amount.toString(), category, date};
 		ServerRequest request = new ServerRequest(cmd, args);
 		net.sendServerRequest(request);
 	}

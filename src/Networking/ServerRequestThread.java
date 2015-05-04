@@ -61,9 +61,6 @@ public class ServerRequestThread extends Thread {
     		case GET_USER_TYPE:
     			result.setResult(db.getUserType(args[0], args[1]));
     			break;
-//    		case CREATE_TRANSACTION:
-//    			db.createTransaction(args[0], args[1], TType.valueOf(args[2]), Double.valueOf(args[3]), args[4], args[5]);
-//    			break;
     		case CREATE_TRANSFER:
     			db.createTransfer(args[0], args[1], args[2], Double.valueOf(args[3]), args[4]);
     			result.setResult(null);
@@ -72,10 +69,10 @@ public class ServerRequestThread extends Thread {
     			db.createDeposit(args[0], args[1], Double.valueOf(args[2]), args[3]);
     			result.setResult(null);
     			break;
-//    		case UPDATE_BALANCE:
-//    			db.updateBalance(args[0], args[1], Double.valueOf(args[2]));
-//    			result.setResult(null);
-//    			break;
+    		case CREATE_WITHDRAWAL:
+    			db.createWithdrawal(args[0], args[1], Double.valueOf(args[2]), args[3], args[4]);
+    			result.setResult(null);
+    			break;
     		case GET_BALANCE:
     			result.setResult(db.getBalance(args[0], args[1]));
     			break;
