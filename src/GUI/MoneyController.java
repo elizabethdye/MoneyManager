@@ -99,13 +99,16 @@ public class MoneyController {
 
 	@FXML
 	public void initialize(){
- 
+
 		net = new Networker();
 		actionContainer.setExpandedPane(depPane);
 		depDatePick.setValue(LocalDate.now());
 		xferDatePick.setValue(LocalDate.now());
 		withDatePick.setValue(LocalDate.now());
 
+		depMessage.setText("");
+		withMessage.setText("");
+		xferMessage.setText("");
 
 	}
 
@@ -145,27 +148,26 @@ public class MoneyController {
 
 	@FXML
 	public void handleDeposit(){
-
+		if(checkAmount(depAmountField.getText())){
 		model.setDate(depDatePick.getValue().toString());
 		model.setAmount(Double.parseDouble(depAmountField.getText()));
 		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
 		model.deposit();
 		acctAmounts.setText(model.updateBalances());
+		withMessage.setText("");
+		depMessage.setText("Deposit accepted.");
+		xferMessage.setText("");
+		clearDepFields();
 		populateCharts();
-		depMessage.setText("You just have more money");
+		}
+		else{
+			showError(ErrorMessage.AMOUNT);
+		}
+		
 	}
 
 	@FXML
 	public void handleTransfer(){
-		model.setDate(xferDatePick.getValue().toString());
-		model.setAmount(Double.parseDouble(xferAmountField.getText()));
-		model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
-		model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
-		model.setCategory(xferCategoryField.getText());
-		model.transfer();
-		acctAmounts.setText(model.updateBalances());
-
-
 		if(checkAmount(xferAmountField.getText())){
 			model.setDate(xferDatePick.getValue().toString());
 			model.setAmount(Double.parseDouble(xferAmountField.getText()));
@@ -175,6 +177,11 @@ public class MoneyController {
 				model.setCategory(xferCategoryField.getText());
 				model.transfer();
 				acctAmounts.setText(model.updateBalances());
+				withMessage.setText("");
+				depMessage.setText("");
+				xferMessage.setText("Transfer accepted.");
+				clearXferFields();
+				populateCharts();
 			}
 			else{
 				showError(ErrorMessage.ACCT_SAME);
@@ -183,20 +190,12 @@ public class MoneyController {
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
-		xferMessage.setText("You just moved money");
+
 
 	}
 
 	@FXML
 	public void handleWithdrawal(){
-		model.setDate(withDatePick.getValue().toString());
-		model.setAmount(Double.parseDouble(withAmountField.getText()));
-		model.setFromAcct(withFromBox.getSelectionModel().getSelectedItem().toString());
-		model.setCategory(withCategoryField.getText());
-		model.withdrawal();
-		acctAmounts.setText(model.updateBalances());
-		populateCharts();
-
 		if(checkAmount(withAmountField.getText())){
 			model.setDate(withDatePick.getValue().toString());
 			model.setAmount(Double.parseDouble(withAmountField.getText()));
@@ -204,13 +203,31 @@ public class MoneyController {
 			model.setCategory(withCategoryField.getText());
 			model.withdrawal();
 			acctAmounts.setText(model.updateBalances());
+			withMessage.setText("Withdrawal accepted.");
+			depMessage.setText("");
+			xferMessage.setText("");
+			clearWithFields();
+			populateCharts();
 		}
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
-		withMessage.setText("You just lost money");
 	}
-
+	
+	public void clearWithFields(){
+		withAmountField.clear();
+		withCategoryField.clear();
+	}
+	
+	public void clearDepFields(){
+		depAmountField.clear();
+		depCategoryField.clear();
+	}
+	
+	public void clearXferFields(){
+		xferAmountField.clear();
+		xferCategoryField.clear();
+	}
 	public void showError(ErrorMessage errorType){
 		ErrorWindow window = new ErrorWindow();
 		window.showError(errorType);
@@ -255,14 +272,14 @@ public class MoneyController {
 	}
 
 	private void populateLineChart() {
-//		TODO: Awaiting methods from model package
+		//		TODO: Awaiting methods from model package
 
 		return;
 
 	}
 
 	private void populatePieChart() {
-//		TODO: Awaiting methods from model package
+		//		TODO: Awaiting methods from model package
 		ArrayList<String> categories = model.getCategories("Checking");
 		Map<String, Double> amountPerCat = new HashMap<>();
 		for (String cat : categories) {
