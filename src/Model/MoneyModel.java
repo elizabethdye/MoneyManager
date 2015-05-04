@@ -110,7 +110,7 @@ public class MoneyModel {
 		ServerRequestResult result = net.sendServerRequest(request);
 		ArrayList<String> categories = (ArrayList<String>) result.getResult();
 		return categories;
-		
+ 		
 	}
 
 	public ArrayList<Double> getTransactionsForCategory(String acctName, String category){
