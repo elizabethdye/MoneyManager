@@ -96,14 +96,22 @@ public class MoneyModel {
 		return accts;
 	}
 
-	public void addAcct(String accName){
+	public void addAcct(String acctName){
 		DatabaseCommand cmd = DatabaseCommand.ADD_ACCT;
-		System.out.println("Here");
-		String[] args = {userID,accName};
+		String[] args = {userID, acctName};
 		ServerRequest request = new ServerRequest(cmd, args);
 		ServerRequestResult result = net.sendServerRequest(request);
-
+	}
+	
+	public ArrayList<String> getCategories(String acctName){
+		DatabaseCommand cmd = DatabaseCommand.GET_CATEGORIES;
+		String[] args = {userID, acctName};
+		ServerRequest request = new ServerRequest(cmd, args);
+		ServerRequestResult result = net.sendServerRequest(request);
+		ArrayList<String> categories = (ArrayList<String>) result.getResult();
+		return categories;
+		
 	}
 
-	
+		
 }

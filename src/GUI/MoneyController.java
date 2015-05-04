@@ -1,5 +1,6 @@
 package GUI;
 
+import Model.ErrorMessage;
 import Model.MoneyModel;
 import Networking.Networker;
 import javafx.collections.FXCollections;
@@ -161,8 +162,13 @@ public class MoneyController {
 		model.withdrawal();
 		acctAmounts.setText(model.updateBalances());
 		System.out.println(model.updateBalances());
-
 	}
+	
+	public void showError(ErrorMessage errorType){
+		ErrorWindow window = new ErrorWindow();
+		window.showError(errorType);
+	}
+	
 	public void setUser(String name) {
 		model = new MoneyModel();
 		model.setUser(name);
