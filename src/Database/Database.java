@@ -146,12 +146,12 @@ public class Database {
 	}	
 
 	public ArrayList<String> getCategories(String name, String account) throws ClassNotFoundException, SQLException {
-		String query = "SELECT Category FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
+		String query = "SELECT Category FROM Transactions WHERE UserID = '" + name + "' AND Account = '" + account + "'";
 		return makeQuery(query);
 	}
 	
 	public ArrayList<Double> getTransactionsForCategory(String name, String account, String category) throws ClassNotFoundException, SQLException {
-		String query = "SELECT Amount FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE Category = '" + category + "'";
+		String query = "SELECT Amount FROM Transactions WHERE UserID = '" + name + "' AND Account = '" + account + "' AND WHERE Category = '" + category + "'";
 		ArrayList<String> result = makeQuery(query);
 		ArrayList<Double> toReturn = new ArrayList<Double>();
 		for (String s: result) {
@@ -161,7 +161,7 @@ public class Database {
 	}
 	
 	public ArrayList<String> getTransactions(String name, String account) throws SQLException {
-		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE TransactionType <> '" + TType.DEPOSIT.toString() +"' ORDER BY Date";
+		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND Account = '" + account + "' AND TransactionType <> '" + TType.DEPOSIT.toString() +"' ORDER BY Date";
         ResultSet rs = stat.executeQuery(query);
         String separator = "~;~";
 		ArrayList<String> toReturn = new ArrayList<String>();
