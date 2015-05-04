@@ -71,7 +71,26 @@ public class MoneyModel {
 		ServerRequest request = new ServerRequest(cmd, args);
 		net.sendServerRequest(request);
 	}
-
+	
+	public boolean checkAccts(){
+		if(toAcct.equals(fromAcct)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean checkExists(String acctName){
+		ObservableList<String> accts = getAccts();
+		if( accts.contains(acctName)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public String updateBalances() {
 		getAccts();
 		DatabaseCommand cmd = DatabaseCommand.GET_BALANCE;
