@@ -99,7 +99,7 @@ public class MoneyController {
 
 	@FXML
 	public void initialize(){
- 
+
 		net = new Networker();
 		actionContainer.setExpandedPane(depPane);
 		depDatePick.setValue(LocalDate.now());
@@ -148,7 +148,6 @@ public class MoneyController {
 
 	@FXML
 	public void handleDeposit(){
-
 		if(checkAmount(depAmountField.getText())){
 			model.setDate(depDatePick.getValue().toString());
 			model.setAmount(Double.parseDouble(depAmountField.getText()));
@@ -164,6 +163,7 @@ public class MoneyController {
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
+
 	}
 
 	@FXML
@@ -171,25 +171,31 @@ public class MoneyController {
 		if(checkAmount(xferAmountField.getText())){
 			model.setDate(xferDatePick.getValue().toString());
 			model.setAmount(Double.parseDouble(xferAmountField.getText()));
-			model.setCategory(xferCategoryField.getText());
-			model.transfer();
-			acctAmounts.setText(model.updateBalances());
-			withMessage.setText("");
-			depMessage.setText("");
-			xferMessage.setText("Transfer accepted.");
-			clearXferFields();
-			populateCharts();
+			model.setFromAcct(xferFromBox.getSelectionModel().getSelectedItem().toString());
+			model.setToAcct(xferToBox.getSelectionModel().getSelectedItem().toString());
+			if(!model.checkAccts()){
+				model.setCategory(xferCategoryField.getText());
+				model.transfer();
+				acctAmounts.setText(model.updateBalances());
+				withMessage.setText("");
+				depMessage.setText("");
+				xferMessage.setText("Transfer accepted.");
+				clearXferFields();
+				populateCharts();
 			}
 			else{
-				showError(ErrorMessage.AMOUNT);
+				showError(ErrorMessage.ACCT_SAME);
 			}
+		}
+		else{
+			showError(ErrorMessage.AMOUNT);
+		}
+
 
 	}
 
 	@FXML
 	public void handleWithdrawal(){
-
-
 		if(checkAmount(withAmountField.getText())){
 			model.setDate(withDatePick.getValue().toString());
 			model.setAmount(Double.parseDouble(withAmountField.getText()));
@@ -206,8 +212,8 @@ public class MoneyController {
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
-		withMessage.setText("You just lost money");
 	}
+
 	public void clearWithFields(){
 		withAmountField.clear();
 		withCategoryField.clear();
@@ -228,7 +234,7 @@ public class MoneyController {
 	}
 
 	private boolean checkAmount(String amount){
-		if(amount.equals("[-+]?[0-9]*\\.?[0-9]+") || !amount.contains("-")){
+		if(amount.equals("\\d+") || amount.contains("-")){
 			return true;
 		}
 		else{
@@ -266,14 +272,14 @@ public class MoneyController {
 	}
 
 	private void populateLineChart() {
-//		TODO: Awaiting methods from model package
+		//		TODO: Awaiting methods from model package
 
 		return;
 
 	}
 
 	private void populatePieChart() {
-//		TODO: Awaiting methods from model package
+		//		TODO: Awaiting methods from model package
 		ArrayList<String> categories = model.getCategories("Checking");
 		Map<String, Double> amountPerCat = new HashMap<>();
 		for (String cat : categories) {
