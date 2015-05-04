@@ -140,6 +140,7 @@ public class MoneyController {
 		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
 		model.deposit();
 		acctAmounts.setText(model.updateBalances());
+		populateCharts();
 	}
 
 	@FXML
@@ -151,6 +152,7 @@ public class MoneyController {
 		model.setCategory(xferCategoryField.getText());
 		model.transfer();
 		acctAmounts.setText(model.updateBalances());
+
 	}
 
 	@FXML
@@ -161,7 +163,7 @@ public class MoneyController {
 		model.setCategory(withCategoryField.getText());
 		model.withdrawal();
 		acctAmounts.setText(model.updateBalances());
-		System.out.println(model.updateBalances());
+		populateCharts();
 	}
 	
 	public void showError(ErrorMessage errorType){
@@ -199,10 +201,10 @@ public class MoneyController {
 		String a = model.updateBalances();
 		acctAmounts.setText(model.updateBalances());
 		acctAmounts.setId("balance-amount");
-		populateChart();
+		populateCharts();
 	}
 
-	public void populateChart() {
+	public void populateCharts() {
 		populatePieChart();
 		populateLineChart();
 	}
@@ -216,24 +218,14 @@ public class MoneyController {
 
 	private void populatePieChart() {
 //		TODO: Awaiting methods from model package
-		System.out.println("GetCat? ");
 		ArrayList<String> categories = model.getCategories("Checking");
-		System.out.println("DOnE");
 		Map<String, Double> amountPerCat = new HashMap<>();
-		for (String cat : categories){
-			ArrayList<Double> vals = model.getTransactionsForCategory("Checking",cat);
-			System.out.println("ASDASD");
+		for (String cat : categories) {
+			if ( isTranfer(cat) ){ continue;}
+			ArrayList<Double> vals = model.getTransactionsForCategory("Checking", cat);
 			Double val = sumArrayList(vals);
 			amountPerCat.put(cat, val);
 		}
-//		System.out.println("Tesing chart data");
-//		Map<String, Double> amountPerCat = new HashMap<>();
-//		amountPerCat.put("Apple",10.0);
-//		amountPerCat.put("Banana",20.0);
-//		amountPerCat.put("Cherry",40.0);
-//		amountPerCat.put("Duriant",50.5);
-//		amountPerCat.put("Energy",10.0);
-
 
 		ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
 		for (Map.Entry<String,Double> entry : amountPerCat.entrySet()){
@@ -242,9 +234,10 @@ public class MoneyController {
 		}
 		pieChart.setData(chartData);
 		pieChart.setTitle("Spending based on categories");
+	}
 
-
-
+	private boolean isTranfer(String cat) {
+		return (cat.equals("TransferTo") || cat.equals("TransferFrom"));
 	}
 
 	private Double sumArrayList(ArrayList<Double> vals){
