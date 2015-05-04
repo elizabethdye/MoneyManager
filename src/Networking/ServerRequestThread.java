@@ -85,11 +85,9 @@ public class ServerRequestThread extends Thread {
     		case ADD_ACCT:
     			db.addAccount(args[0], args[1]);
     			result.setResult(null);
-    			break; 
+    			break;
     		case GET_CATEGORIES:
-    			System.out.println("Here1");
     			result.setResult(db.getCategories(args[0], args[1]));
-    			System.out.println("Here2");
     			break;
     		case GET_TRANSACTIONS:
     			result.setResult(db.getTransactions(args[0], args[1]));
