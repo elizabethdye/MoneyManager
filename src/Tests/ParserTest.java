@@ -31,7 +31,7 @@ public class ParserTest {
 				assertEquals(t.getType(), TType.WITHDRAWAL);
 			}
 		}
-		fail("Not yet implemented");
+
 	}
 
 }

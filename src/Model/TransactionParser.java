@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TransactionParser {
 	String[] parts;
-	ArrayList<TransactionInfo> transactions;
+	ArrayList<TransactionInfo> transactions ;
 	
 	public String[] parseString(String s){
 		parts = s.split("~;~");
@@ -19,6 +19,7 @@ public class TransactionParser {
 	}
 	
 	public ArrayList<TransactionInfo> getTransactionList(ArrayList<String> list){
+		transactions = new ArrayList<>();
 		for(String transaction: list){
 			parseString(transaction);
 			TransactionInfo t = new TransactionInfo();
