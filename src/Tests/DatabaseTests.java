@@ -99,8 +99,48 @@ public class DatabaseTests {
 	}
 	
 	@Test
-	public void testGetCategoriesMultiple() {
-		
+	public void testGetCategoriesMultiple() throws ClassNotFoundException, SQLException {
+		addMultipleCategories();
+		ArrayList<String> categories = db.getCategories("User1", "Account");
+		assertEquals(categories.size(), 5);
+		assertEquals(categories.get(0), "Groceries");
+		assertEquals(categories.get(1), "Movies");
+		assertEquals(categories.get(2), "Rent");
+		assertEquals(categories.get(3), "Travel");
+		assertEquals(categories.get(4), "Video Games");
+	}
+	
+	@Test
+	public void testGetTransactionsForCategory() throws ClassNotFoundException, SQLException {
+		addMultipleCategories();
+		ArrayList<Double> groceriesAmounts = db.getTransactionsForCategory("User1", "Account", "Groceries");
+		ArrayList<Double> travelAmounts = db.getTransactionsForCategory("User1", "Account", "Travel");
+		ArrayList<Double> movieAmounts = db.getTransactionsForCategory("User1", "Account", "Movies");
+		assertEquals(groceriesAmounts.size(), 2);
+		assertTrue(groceriesAmounts.contains(-10.0));
+		assertTrue(groceriesAmounts.contains(-15.0));
+		assertFalse(groceriesAmounts.contains(-25.0));
+		assertEquals(travelAmounts.size(), 2);
+		assertTrue(travelAmounts.contains(-70.0));
+		assertTrue(travelAmounts.contains(-40.0));
+		assertFalse(travelAmounts.contains(-25.0));
+		assertEquals(movieAmounts.size(), 1);
+		assertTrue(movieAmounts.contains(-20.0));
+		assertFalse(movieAmounts.contains(-25.0));
+	}
+	
+	@Test
+	public void testGetTransactions() throws ClassNotFoundException, SQLException {
+		addMultipleCategories();
+		ArrayList<String> transactions = db.getTransactions("User1", "Account");
+		assertEquals(transactions.size(), 7);
+		assertTrue(transactions.contains("WITHDRAWAL~;~-20.0~;~Movies~;~April 17"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-15.0~;~Groceries~;~April 23"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-40.0~;~Travel~;~May 1"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-30.0~;~Rent~;~May 13"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-10.0~;~Groceries~;~May 27"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-70.0~;~Travel~;~May 30"));
+		assertTrue(transactions.contains("WITHDRAWAL~;~-50.0~;~Video Games~;~June 23"));
 	}
 	
 	public void addTwoDeposits() throws SQLException, ClassNotFoundException {
@@ -119,47 +159,13 @@ public class DatabaseTests {
 	}
 	
 	public void addMultipleCategories() throws ClassNotFoundException, SQLException {
-		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Rent", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Movies", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Video Games", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Travel", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Travel", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 27");
+		db.createWithdrawal("User1", "Account", 30.0, "Rent", "May 13");
+		db.createWithdrawal("User1", "Account", 15.0, "Groceries", "April 23");
+		db.createWithdrawal("User1", "Account", 20.0, "Movies", "April 17");
+		db.createWithdrawal("User1", "Account", 50.0, "Video Games", "June 23");
+		db.createWithdrawal("User1", "Account", 70.0, "Travel", "May 30");
+		db.createWithdrawal("User1", "Account", 40.0, "Travel", "May 1");
 	}
-	
-	
-//	public ArrayList<String> getCategories(String name, String account) throws ClassNotFoundException, SQLException {
-//		String query = "SELECT Category FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "'";
-//		return makeQuery(query);
-//	}
-//	
-//	public ArrayList<Double> getTransactionsForCategory(String name, String account, String category) throws ClassNotFoundException, SQLException {
-//		String query = "SELECT Amount FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE Category = '" + category + "'";
-//		ArrayList<String> result = makeQuery(query);
-//		ArrayList<Double> toReturn = new ArrayList<Double>();
-//		for (String s: result) {
-//			toReturn.add(Double.parseDouble(s));
-//		}
-//		return toReturn;
-//	}
-//	
-//	public ArrayList<String> getTransactions(String name, String account) throws SQLException {
-//		String query = "SELECT TransactionType, Amount, Category, Date FROM Transactions WHERE UserID = '" + name + "' AND WHERE Account = '" + account + "' AND WHERE TransactionType <> '" + TType.DEPOSIT.toString() +"' ORDER BY Date";
-//        ResultSet rs = stat.executeQuery(query);
-//        String separator = "~;~";
-//		ArrayList<String> toReturn = new ArrayList<String>();
-//        while (rs.next()) {
-//        	String type = rs.getString("TransactionType");
-//        	Double amount = rs.getDouble("Amount");
-//        	String category = rs.getString("Category");
-//        	String date = rs.getString("Date");
-//        	String transactionVal = type + separator +
-//        			amount.toString() + separator +
-//        			category + separator +
-//        			date;
-//        	toReturn.add(transactionVal);
-//        }
-//		return toReturn;
-//	}
+
 }
