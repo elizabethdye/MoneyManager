@@ -153,6 +153,17 @@ public class MoneyController {
 		acctAmounts.setText(model.updateBalances());
 		populateCharts();
 		depMessage.setText("You just have more money");
+
+		if(checkAmount(depAmountField.getText())){
+			model.setDate(depDatePick.getValue().toString());
+			model.setAmount(Double.parseDouble(depAmountField.getText()));
+			model.setCategory(depCategoryField.getText());
+			model.deposit();
+			acctAmounts.setText(model.updateBalances());
+		}
+		else{
+			showError(ErrorMessage.AMOUNT);
+		}
 	}
 
 	@FXML
@@ -217,7 +228,7 @@ public class MoneyController {
 	}
 
 	private boolean checkAmount(String amount){
-		if(amount.equals("\\d+") || amount.contains("-")){
+		if(amount.equals("[-+]?[0-9]*\\.?[0-9]+") || !amount.contains("-")){
 			return true;
 		}
 		else{
