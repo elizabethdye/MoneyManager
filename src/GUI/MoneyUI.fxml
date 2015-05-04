@@ -13,7 +13,7 @@
             <HBox minHeight="45.0" minWidth="200.0" prefHeight="45.0" prefWidth="603.0" styleClass="HBox" stylesheets="@MoneyUI.css" VBox.vgrow="NEVER">
                <children>
                   <Label id="balance-label" prefHeight="46.0" prefWidth="137.0" stylesheets="@MoneyUI.css" text="Account Balances:" />
-                  <Label id="balance-amount" fx:id="acctAmounts" prefHeight="45.0" prefWidth="455.0" stylesheets="@MoneyUI.css" text="TEST" />
+                  <TextArea fx:id="acctAmounts" editable="false" prefHeight="46.0" prefWidth="459.0" />
                </children>
             </HBox>
             <TabPane styleClass="background" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
@@ -72,10 +72,20 @@
                                                       <Insets />
                                                    </opaqueInsets>
                                                 </HBox>
-                                                <Button fx:id="Deposit" mnemonicParsing="false" onAction="#handleDeposit" text="Deposit" translateY="10.0">
-                                                   <VBox.margin>
-                                                      <Insets left="10.0" top="20.0" />
-                                                   </VBox.margin></Button>
+                                                <HBox prefHeight="39.0" prefWidth="579.0">
+                                                   <children>
+                                                      <Button fx:id="Deposit" mnemonicParsing="false" onAction="#handleDeposit" text="Deposit" translateY="10.0">
+                                                         <VBox.margin>
+                                                            <Insets left="10.0" top="20.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Label id="message" fx:id="depMessage" stylesheets="@MoneyUI.css">
+                                                         <HBox.margin>
+                                                            <Insets left="20.0" top="15.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
                                              </children>
                                           </VBox>
                                        </content>
@@ -157,10 +167,20 @@
                                                             <Insets bottom="15.0" top="15.0" />
                                                          </VBox.margin>
                                                       </HBox>
-                                                      <Button fx:id="Transfer" mnemonicParsing="false" onAction="#handleTransfer" text="Transfer">
-                                                         <VBox.margin>
-                                                            <Insets left="10.0" />
-                                                         </VBox.margin></Button>
+                                                      <HBox>
+                                                         <children>
+                                                            <Button fx:id="Transfer" mnemonicParsing="false" onAction="#handleTransfer" text="Transfer">
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </Button>
+                                                            <Label id="message" fx:id="xferMessage">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="7.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </VBox>
                                              </children>
@@ -239,10 +259,20 @@
                                                             <Insets bottom="15.0" top="10.0" />
                                                          </VBox.margin>
                                                       </HBox>
-                                                      <Button fx:id="Withdrawal" mnemonicParsing="false" onAction="#handleWithdrawal" text="Withdrawal">
-                                                         <VBox.margin>
-                                                            <Insets left="10.0" />
-                                                         </VBox.margin></Button>
+                                                      <HBox>
+                                                         <children>
+                                                            <Button fx:id="Withdrawal" mnemonicParsing="false" onAction="#handleWithdrawal" text="Withdrawal">
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </Button>
+                                                            <Label id="message" fx:id="withMessage">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="5.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </VBox>
                                              </children>

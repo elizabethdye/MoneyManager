@@ -21,7 +21,7 @@ public class MoneyController {
 	TitledPane depPane;
 
 	@FXML
-	Label acctAmounts;
+	TextArea acctAmounts;
 
 	@FXML
 	Button Deposit;
@@ -77,6 +77,14 @@ public class MoneyController {
 	@FXML
 	LineChart lineChart;
 
+	@FXML
+	Label depMessage;
+	@FXML
+	Label xferMessage;
+	@FXML
+	Label withMessage;
+
+
 	Main main;
 	String userID;
 	MoneyModel model;
@@ -97,6 +105,7 @@ public class MoneyController {
 		depDatePick.setValue(LocalDate.now());
 		xferDatePick.setValue(LocalDate.now());
 		withDatePick.setValue(LocalDate.now());
+
 
 	}
 
@@ -136,12 +145,14 @@ public class MoneyController {
 
 	@FXML
 	public void handleDeposit(){
+
 		model.setDate(depDatePick.getValue().toString());
 		model.setAmount(Double.parseDouble(depAmountField.getText()));
 		model.setToAcct(toBoxDep.getSelectionModel().getSelectedItem().toString());
 		model.deposit();
 		acctAmounts.setText(model.updateBalances());
 		populateCharts();
+		depMessage.setText("You just have more money");
 	}
 
 	@FXML
@@ -172,6 +183,7 @@ public class MoneyController {
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
+		xferMessage.setText("You just moved money");
 
 	}
 
@@ -196,7 +208,7 @@ public class MoneyController {
 		else{
 			showError(ErrorMessage.AMOUNT);
 		}
-
+		withMessage.setText("You just lost money");
 	}
 
 	public void showError(ErrorMessage errorType){

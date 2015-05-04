@@ -149,7 +149,7 @@
 	-fx-background-color: #d8d8d8;
 }
 .tab-label{
-	-fx-background-color: transparent, #bababa, transparent, white;
+	-fx-background-color: transparent, #bababa, transparent, white;;
 }
 .tab-label .text{
 	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -171,4 +171,14 @@
 .title .text {
 	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 	-fx-font-size: 10pt;
+}
+.text-area:readonly{
+	-fx-border-style: none;
+	-fx-background-color: transparent, #bababa, transparent, white;
+}
+#message {
+	-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+	-fx-font-size: 10pt;
+	-fx-text-fill: green;
+	-fx-margin: 10 0 10 0;
 }
