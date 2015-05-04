@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class MoneyController {
 
@@ -221,7 +222,7 @@ public class MoneyController {
 
 	public void clearDepFields(){
 		depAmountField.clear();
-		depCategoryField.clear();
+
 	}
 
 	public void clearXferFields(){
@@ -234,7 +235,9 @@ public class MoneyController {
 	}
 
 	private boolean checkAmount(String amount){
-		if(amount.equals("\\d+") || amount.contains("-")){
+
+
+		if(amount.matches("[-+]?[0-9]*\\.?[0-9]+")){
 			return true;
 		}
 		else{
