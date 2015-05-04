@@ -1,15 +1,13 @@
 package Model;
 
 public enum ErrorMessage {
-	USERPASSWORD, DATE, AMOUNT, ACCT_EXISTS, ACCT_SAME;
+	USERPASSWORD, AMOUNT, ACCT_EXISTS, ACCT_SAME;
 	
 	public static ErrorMessage fromString(String element){
 		element = element.toUpperCase();
 		switch( element ){
 			case "USERPASSWORD":
 				return USERPASSWORD;
-			case "DATE":
-				return DATE;
 			case "AMOUNT":
 				return AMOUNT;
 			case "ACCT_EXISTS":
@@ -19,11 +17,9 @@ public enum ErrorMessage {
 	}
 	
 	public static String returnMessage(ErrorMessage error){
-		switch( error ){
+		switch( error ){ 
 			case USERPASSWORD:
 				return "Invalid Username/Password.";
-			case DATE:
-				return "Please use choose a date.";
 			case AMOUNT:
 				return "Please use only digits and a single decimal point.";
 			case ACCT_EXISTS:
