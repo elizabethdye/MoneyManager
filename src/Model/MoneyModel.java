@@ -113,5 +113,22 @@ public class MoneyModel {
 		
 	}
 
-		
+	public ArrayList<Double> getTransactionsForCategory(String acctName, String category){
+		DatabaseCommand cmd = DatabaseCommand.GET_T_FOR_CAT;
+		String[] args = {userID, acctName, category};
+		ServerRequest request = new ServerRequest(cmd, args);
+		ServerRequestResult result = net.sendServerRequest(request);
+		ArrayList<Double> amounts = (ArrayList<Double>) result.getResult();
+		return amounts;
+	}
+	
+	public ArrayList<TransactionInfo> getTransactions(String acctName){
+		DatabaseCommand cmd = DatabaseCommand.GET_TRANSACTIONS;
+		String[] args = {userID, acctName};
+		ServerRequest request = new ServerRequest(cmd, args);
+		ServerRequestResult result = net.sendServerRequest(request);
+		ArrayList<String> transactions = (ArrayList<String>) result.getResult();
+		TransactionParser parser = new TransactionParser();
+		return parser.getTransactionList(transactions);
+	}
 }

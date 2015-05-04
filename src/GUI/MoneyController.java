@@ -169,6 +169,14 @@ public class MoneyController {
 		window.showError(errorType);
 	}
 	
+	private boolean checkAmount(Double amount){
+		if(amount.equals("\\d+")){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public void setUser(String name) {
 		model = new MoneyModel();
 		model.setUser(name);
