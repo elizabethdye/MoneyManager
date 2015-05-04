@@ -125,7 +125,7 @@ public class DatabaseTests {
 		db.createWithdrawal("User1", "Account", 10.0, "Movies", "May 23");
 		db.createWithdrawal("User1", "Account", 10.0, "Video Games", "May 23");
 		db.createWithdrawal("User1", "Account", 10.0, "Travel", "May 23");
-		db.createWithdrawal("User1", "Account", 10.0, "Groceries", "May 23");
+		db.createWithdrawal("User1", "Account", 10.0, "Travel", "May 23");
 	}
 	
 	
